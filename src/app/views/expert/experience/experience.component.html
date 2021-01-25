@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h2>Experience({{experiences.length}})</h2>
+        <button class="btn bg-theme-primary text-white m-2 my-sm-0" [routerLink]="['/expert/add-experience']">
+          Add Experience
+        </button>
+      </div>
+      <div class="card-body">
+        <!-- <div class="table-responsive"> -->
+        <table
+          class="table stripped table-responsive-sm table-xs-responsive table-hover table-outline mb-0"
+          summary="List of projects"
+          aria-role="table"
+        >
+          <thead class="thead-light">
+            <tr>
+              <th>Institution</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr *ngFor="let item of experiences">
+              <td>
+                <div>
+                  {{ item.name }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.startYear | date:'mediumDate' }}
+                </div>
+              </td>
+              <td>
+                <div *ngIf="item.endYear !== ''">
+                  {{ item.endYear | date:'mediumDate' }}
+                </div>
+                <div *ngIf="item.endYear === ''">
+                  Current
+                </div>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-theme-primary" (click)="setDocument(item)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="my-5 text-center" *ngIf="loading">
+          <span>Fetching Experiences...</span>
+        </div>
+        <div class="my-5 text-center" *ngIf="!loading && experiences.length === 0">
+          <span>No experiences added, add experiences to view them here.</span>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->

@@ -1,0 +1,28 @@
+@import "../../../scss/variables";
+
+.bg-custom {
+  // background-color: #175F16;
+  // background-color: #4e1295;
+}
+.home-nav .fixed-top{
+  border-bottom: 1px solid #c8ced3; 
+}
+.navbar-brand img {
+  width: 220px;
+  height: 40px;
+}
+.nav-item {
+  opacity: 0.6;
+}
+.nav-item:hover {
+  border-bottom: 2px solid #fff;
+  opacity: 1;
+}
+.navbar-nav  {
+  .btn, .nav-item {
+    font-size: 1.2rem;
+  }
+}
+.blur{
+  backdrop-filter: blur(40px);
+}

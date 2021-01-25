@@ -1,0 +1,53 @@
+<div class="animated fadeIn my-5">
+  <div class="row dashboard dashboard__artisan">
+    <div class="col-md-12">
+      <!-- <div class="card"> -->
+      <!-- <div class="card-header d-flex justify-content-center">
+          <h2 class="h2">Subscription</h2>
+        </div> -->
+      <div class="row my-5">
+        <div
+          *ngFor="let subs of subscriptions; let i = index"
+          [ngClass]="{ 'plan-focus': i % 2 === 1 }"
+          class="col-md-4"
+        >
+          <div class="card">
+            <div class="p-3">
+              <div
+                [ngClass]="{ 'ca-text-primary': i % 2 === 0 }"
+                class="plan-title text-uppercase text-center my-5 font-weight-bold"
+              >
+                {{ subs.category }}
+              </div>
+              <div class="pricing">
+                <div
+                  *ngFor="let privilege of subs.privileges"
+                  class="pricing-list"
+                >
+                  <i class="icon-alt icon-check mr-2"></i>
+                  {{ privilege }}
+                </div>
+              </div>
+            </div>
+            <div class="card-footer p-5">
+              <div class="plan-price">
+                <div class="pre-price">Starting at</div>
+                <div class="price">₦{{ subs.amount }}</div>
+                <div class="post-price">a month</div>
+              </div>
+							<button
+								class="btn ca-btn-primary btn-block"
+								(click)="setSubsription(subs)"
+							>
+								Purchase Plan
+							</button>
+            </div>
+          </div>
+				</div>
+			</div>
+    </div>
+  </div>
+</div>
+<div class="text-center" *ngIf="loading">
+	<i class="fa fa-spinner fa-spin mr-2"></i> fetching...
+</div>

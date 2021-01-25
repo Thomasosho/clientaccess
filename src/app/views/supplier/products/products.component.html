@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h2>Products({{ products.length }})</h2>
+        <button
+          class="btn bg-theme-primary text-white m-2 my-sm-0"
+          [routerLink]="['/supplier/add-product']"
+        >
+          Add Product
+        </button>
+      </div>
+      <div class="card-body">
+        <!-- <div class="table-responsive"> -->
+        <table
+          class="table stripped table-responsive-sm table-xs-responsive table-hover table-outline mb-0"
+          summary="List of projects"
+          aria-role="table"
+        >
+          <thead class="thead-light">
+            <tr>
+              <th>Product Image</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr *ngFor="let item of products">
+              <td>
+                <div>
+                  <img
+                    [src]="item.imageUrl"
+                    onError="this.src='../../../../assets/img/no-image-available.jpg'"
+                    width="150"
+                    height="100"
+                    alt="product image"
+                    srcset=""
+                  />
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.productName }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.price }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.category }}
+                </div>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-theme-primary" (click)="editProduct(item)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="my-5 text-center" *ngIf="loading">
+          <span>Fetching Products...</span>
+        </div>
+        <div class="my-5 text-center" *ngIf="!loading && products.length === 0">
+          <span>No products added, add products to view them here.</span>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->
+<ngx-loading-x [show]="loading" [spinnerColor]="'#3a9d5d'"></ngx-loading-x>

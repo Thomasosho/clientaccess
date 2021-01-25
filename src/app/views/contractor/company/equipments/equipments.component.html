@@ -1,0 +1,59 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h2>Equipments</h2>
+        <button
+          class="btn bg-theme-primary text-white m-2 my-sm-0"
+          [routerLink]="['/contractor/company/equipments/upload']"
+        >
+          Upload Equipment
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="py-3 my-2">
+          <div class="row">
+            <div class="col-md-6 my-3" *ngFor="let equipment of equipments">
+              <div class="container">
+                <div class="card-inner p-2">
+                  <div class="card-img">
+                    <img
+                      [src]="equipment.imageUrl"
+                      alt="equipment image"
+                      srcset=""
+                    />
+                    <div class="card-img-content">
+                      <div class="title p-2">{{ equipment.name }}</div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                  <div>
+                    <div class="p-2 my-1">
+                      <strong class="mr-1">Manufacturer:</strong> {{ equipment.make }}
+                    </div>
+                    <div class="d-flex">
+                      <div class="px-2">
+                        <strong class="mr-1">Model:</strong> {{ equipment.model  }} ({{ equipment.year }})
+                      </div>
+                    </div>
+                    </div>
+                    <div class="h-100 my-auto mx-2">
+                    <button class="btn bg-theme-primary" (click)="deleteEquipment(equipment.id)">
+                      Delete
+                    </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="my-5 text-center" *ngIf="!loading && equipments.length === 0">
+          <span>No equipments uploaded, please upload equipments to view them here.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/.row-->
+<ngx-loading-x [show]="loading" [spinnerColor]="'#3a9d5d'"></ngx-loading-x>

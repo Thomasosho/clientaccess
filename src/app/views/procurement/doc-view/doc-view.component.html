@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h2>{{docType | titlecase}}({{documents.length}})</h2>
+      </div>
+      <div class="card-body">
+        <table
+          class="table stripped table-responsive-sm table-xs-responsive table-hover table-outline mb-0"
+          summary="List of projects"
+          aria-role="table"
+        >
+          <colgroup>
+            <col span="1" style="width: 20%;" />
+            <col span="1" style="width: 60%;" />
+            <!-- <col span="1" style="width: 15%;" /> -->
+            <col span="1" style="width: 20%;" />
+          </colgroup>
+          <thead class="thead-light">
+            <tr class="text-center">
+              <th>{{docType | titlecase}}</th>
+              <th>Corresponding Tender</th>
+              <!-- <th>Year</th> -->
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr *ngFor="let item of documents">
+              <td>
+                <div>
+                  <img
+                    [src]="item.imageUrl"
+                    onError="this.src='../../../../assets/img/pdf.png'"
+                    width="150"
+                    height="150"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.tender.title || 'Description not available' }}
+                </div>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-theme-primary" (click)="download(item)">Download</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="my-5 text-center" *ngIf="!loading && documents.length === 0">
+          <span>No documents added, add documents to view them here.</span>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->

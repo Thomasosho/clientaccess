@@ -1,0 +1,310 @@
+@import "../../../scss/variables";
+
+section {
+  h2 {
+    font-size: 40px;
+    font-weight: bolder;
+  }
+  h3 {
+    font-size: 35px;
+    font-weight: 300;
+    color: #000;
+  }
+}
+
+h1{
+  color: #ffff;
+  font-size: 45px;
+  font-weight: 800;
+}
+
+h2{
+  color: $ca-color-primary;
+  font-size: 35px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+h3{
+  font-size: 40px;
+  font-weight: 800;
+}
+
+h4{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.ca-hero-section{
+  background: linear-gradient(rgba(199, 73, 35, 0.86), rgba(199, 73, 35, 0.86)), url(/assets/img/bg/Abuja-city.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 600px;
+  text-align: center;
+  width: 100%;
+  padding: 3em 0em;
+  .search-section,
+  .banner-text {
+    margin-top: 7em;
+  }
+}
+
+.services:hover {
+  -webkit-transform:scale(1.25); /* Safari and Chrome */
+  -moz-transform:scale(1.25); /* Firefox */
+  -ms-transform:scale(1.25); /* IE 9 */
+  -o-transform:scale(1.25); /* Opera */
+  transform:scale(1.25);
+}
+.service {
+  color: #fff;
+  line-height: 1.5;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  &:active, &:focus {
+    outline: 0;
+    border: none;
+    -moz-outline-style: none;
+  }
+}
+
+.ca-why-us-section{
+  text-align: center;
+  width: 100%;
+  padding: 5em 1em;
+  min-height: 700px;
+}
+
+.why-us{
+  margin: 3em auto;
+}
+
+.why-us p{
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 0;
+  color: #374747;
+}
+
+.icons{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 4em 0;
+}
+
+// .icons div{
+//   width: 20%;
+// }
+
+.icons img{
+  text-align: center;
+  width: 50px;
+}
+
+.icons p{
+  color: #808080;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.ca-how-it-works-section{
+  background-color: $ca-color-primary;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 600px;
+  padding: 5em 0;
+  .wrapper{
+    display: flex;
+    margin: auto;
+    width: 80%;
+  }
+}
+
+.how-it-works::first-line{
+  color: $ca-color-secondary;
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.how-it-works{
+ // max-width: 50%;
+  padding: 0 50px;
+ // width: 100%;
+}
+
+.how-it-works ul{
+  padding: 0;
+}
+
+.how-it-works li {
+ color: #ffff;
+ font-size: 14px;
+ font-weight: 400;
+ line-height: 1.5;
+ list-style: none;
+ position: relative;
+ padding-left: 3em;
+ margin-bottom: 1em;
+}
+
+.how-it-works li::before{
+  content: '';
+  display:block;
+  border: 2px solid $ca-color-secondary;
+  border-radius: 50%;
+  margin-right: 20px;
+  height: 10px;
+  position: absolute;
+  top: 10px;
+  left : 0;
+  width: 10px;
+}
+
+
+.how-image-container{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.how-image{
+  // background-image: url(/assets/img/landing/man-walking.jpeg);
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  border-radius: 2%;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+// .transparent-bg{
+//   background-color:lighten($ca-color-primary, 10%);
+//   border-radius: 2%;
+//   height:110%;
+//   position: absolute;
+//   left:60px;
+//   top: 70px;
+//   width:90%;
+//   z-index: 1;
+// }
+
+.ca-search-section {
+  padding: 5em 0em;
+  text-align: center;
+  min-height: 700px;
+  h1 {
+    font-size: 50px;
+    font-weight: bolder;
+  }
+  .search-section,
+  .banner-text {
+    margin-top: 7em;
+  }
+  ul {
+    &.nav-pills {
+      border-bottom: 1px solid lighten($ca-color-grey, 40);
+      justify-content: center;
+    }
+    & li > a {
+      color: $ca-color-grey;
+      font-size: 0.9em;
+    }
+  }
+  .nav-pills .nav-link.active,
+  .nav-pills .show > .nav-link {
+    position: relative;
+    color: $ca-color-primary;
+    background-color: lighten($ca-color-primary, 50);
+    border-radius: 0;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 0.2em;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $ca-color-primary;
+    }
+  }
+}
+
+.ca-download-section{
+  padding-top: 5em;
+  position: relative;
+  background-color: #fff;
+  .ca-subscribe {
+    position: relative;
+    padding: 5em 0em;
+    text-align: center;
+    min-height: 700px;
+    background: url(/assets/img/landing/landing-curve.svg);
+    background-size: cover;
+    h4 {
+      margin-top: 7em;
+      font-size: 35px;
+      font-weight: bolder;
+      color: $ca-color-primary;
+    }
+    .search-section,
+    .banner-text {
+      margin-top: 3em;
+      position: relative;
+      z-index: 100;
+      width: 100%;
+    }
+  }
+}
+
+.ca-download-section::before{
+  background: linear-gradient(rgba(255, 237, 190, 0.80), rgba(255, 237, 190, 0.80)), url(/assets/img/bg/Abuja-city.jpg);
+  background-size: cover;
+  content: '';
+  filter: blur(4px);
+  height: 100%;
+  opacity: .3;
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  z-index: 0;
+}
+
+.download-wrapper{
+  align-items: center;
+  display: flex;
+  margin: auto;
+  position: relative;
+  width: 90%;
+  z-index: 1;
+}
+
+.download-container{
+  text-align:right;
+}
+
+.download-container p{
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+.download-logos{
+  margin: 3em 0em;
+}
+.download-logos img{
+  width: 40%;
+}
+
+.subscribe{
+  color: $ca-color-primary;
+  text-align: center;
+}
+
+.subscribe p{
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.5;
+}

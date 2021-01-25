@@ -1,0 +1,78 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h2>Staff({{staffProfiles.length}})</h2>
+        <button class="btn bg-theme-primary text-white m-2 my-sm-0" [routerLink]="['/contractor/staff/create-staff']" >
+          Create Staff
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="py-3 my-2">
+          <div class="row">
+            <div class="col-md-4 my-3" *ngFor="let staff of staffProfiles">
+              <div class="container">
+                <div class="card-inner p-2">
+                  <div class="card-img">
+                    <img
+                      [src]="staff.imageUrl"
+                      alt="staff image"
+                      srcset=""
+                    />
+                    <div class="card-img-content">
+                      <div class="title p-2">{{ staff.firstName }} {{ staff.lastName }}</div>
+                    </div>
+                  </div>
+                  <div class="mt-3 px-2 my-1">
+                    <strong class="mr-1">Designation:</strong> {{ staff.designation }}
+                  </div>
+                  <div class="d-flex">
+                    <div class="px-2">
+                      <strong class="mr-1">Email:</strong> {{staff.email}} 
+                    </div>
+                  </div>
+                  <div class="d-flex">
+                    <div class="px-2">
+                      <strong class="mr-1">Phone Number:</strong> 0{{staff.phoneNumber}}
+                    </div>
+                  </div>
+                  <div class="d-flex my-2 p-2">
+                    <div class="">
+                      <button class="btn btn-warning" (click)="setStaff(staff, 'edit')">Edit Profile</button>
+                    </div>
+                    <div class="ml-auto">
+                      <!-- <button class="btn btn-theme-primary" (click)="openModal(template, staff)">View Profile</button> -->
+                      <button class="btn btn-theme-primary" (click)="setStaff(staff)">View Profile</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="my-5 text-center" *ngIf="loading">
+          <i class="fa fa-spinner fa-spin mr-2"></i> fetching staff...
+        </div>
+        <div class="my-5 text-center" *ngIf="!loading && staffProfiles.length === 0">
+          <span>No staff added, please add staff profiles to view them here.</span>
+        </div>
+      </div>
+ 
+        <ng-template #template>  
+          <div class="modal-header">  
+            <h4 class="modal-title pull-left">Staff Profile</h4>  
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+              <span aria-hidden="true">×</span>  
+            </button>  
+          </div>  
+          <div class="modal-body">
+            <app-view-staff></app-view-staff>
+          </div>  
+          <div class="modal-footer">  
+            <button type="button" class="btn btn-warning" (click)="modalRef.hide()">Close</button>  
+          </div>  
+        </ng-template> 
+    </div>
+  </div>
+</div>
+<!--/.row-->

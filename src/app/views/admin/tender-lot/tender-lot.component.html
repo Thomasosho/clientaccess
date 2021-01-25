@@ -1,0 +1,83 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-10">
+    <div class="card">
+      <div class="card-header">
+        <strong>Tender Lot</strong>
+      </div>
+      <div class="card-body">
+        <table
+          class="table stripped-alt table-responsive-sm table-xs-responsive table-hover table-outline mt-2 mb-5"
+          summary="List of projects"
+          aria-role="table"
+        >
+          <colgroup>
+            <col span="1" style="width: 20%;" />
+            <col span="1" style="width: 25%;" />
+            <col span="1" style="width: 40%;" />
+            <col span="1" style="width: 15%;" />
+          </colgroup>
+          <thead class="thead-light">
+            <tr>
+              <th>Lot Number</th>
+              <th>Lot Category</th>
+              <th>Lot Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr *ngFor="let item of tenderLot">
+              <td>
+                <div>
+                  {{item.lotNumber}}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.category }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.description || 'Description not available' }}
+                </div>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-theme-primary" (click)="editLot(item)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <form class="form-horizontal" (ngSubmit)="addTenderLot()" [formGroup]="tenderLotForm">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="description">Description</label>
+            <div class="col-md-9">
+              <input type="text" id="description" formControlName="description" name="description" class="form-control" placeholder="Description">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="description">Lot Numder</label>
+            <div class="col-md-9">
+              <input type="text" id="lotNumber" formControlName="lotNumber" name="lotNumber" class="form-control" placeholder="Lot Numder">
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-md-3 col-form-label" for="category">Category</label>
+            <div class="col-md-9">
+              <select id="category" formControlName="category" class="form-control" (change)="setCategory($event.target.value)">
+                <option value="" selected disabled hidden>Please select category</option>
+                <option *ngFor="let category of tenderCategory" [value]="category.id">{{category.categoryName}}</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success mx-3" type="button" disabled *ngIf="loading">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Loading...
+        </button>
+        <button type="submit" class="btn btn-success mx-3" *ngIf="!loading" (click)="addTenderLot()">{{ isAdd ? 'Add Tender Lot' : 'Update Tender Lot'}}</button>
+      </div>
+    </div>
+  </div>
+</div><!--/.row-->

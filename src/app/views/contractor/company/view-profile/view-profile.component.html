@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+          <div class="col-md-6 mx-auto">
+            <div class="brand-card-header">
+              <!-- <i class="fa fa-facebook"></i> -->
+              <img
+                class="img-responsive"
+                [src]="company.logoUrl" 
+                onError="this.src='../../../../assets/img/logo/logo-primary.svg'"
+                width="40%"
+                height="100%"
+                alt="company logo"
+                srcset=""
+              />
+            </div>
+            <div class="brand-card-body">
+              <div>
+                <div class="text-uppercase text-muted small">Company</div>
+                <div class="text-value"> {{ company?.companyName }} </div>
+              </div>
+              <div>
+                <div class="text-uppercase text-muted small">Incorporated</div>
+                <div class="text-value">{{ company?.dateOfIncorporation }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="card-body">
+        <!-- <br> -->
+        <table class="table table-responsive-sm table-xs-responsive mb-0">
+          <colgroup>
+            <col span="1" style="width: 20%;" />
+            <col span="1" style="width: 80%;" />
+          </colgroup>
+          
+          <tbody>
+            <tr>
+              <td><div class="font-weight-bold">Website</div></td>
+              <td><div> {{ company?.website }} </div></td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">Address</div></td>
+              <td><div> {{ company?.address }} </div></td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">Classification</div></td>
+              <td><div> {{ company?.classification }} </div></td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">Mission & Vision Statement</div></td>
+              <td>
+                <div>
+                 {{ company?.missionAndVisionStatement }}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">What We Do</div></td>
+              <td>
+                <div>
+                  {{ company?.whatWeDo }}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">Company Email</div></td>
+              <td><div>{{email}}</div></td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">Contact Person 1</div></td>
+              <td>
+                <div *ngIf="contact1">
+                  {{ contact1?.firstName + ' ' + contact1?.lastName}} <br>
+                  {{ contact1?.phoneNumber }} <br>
+                  {{ contact1?.email }} <br>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">Contact Person 2</div></td>
+              <td>
+                <div *ngIf="contact2">
+                  {{ contact2?.firstName + ' ' + contact2?.lastName}} <br>
+                  {{ contact2?.phoneNumber }} <br>
+                  {{ contact2?.email }} <br>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/.row-->

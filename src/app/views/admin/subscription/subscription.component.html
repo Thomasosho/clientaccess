@@ -1,0 +1,46 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header  d-flex justify-content-between">
+          <strong>Subscriptions</strong>
+          <button class="btn bg-theme-primary text-white m-2 my-sm-0" [routerLink]="['/admin/subscription/add']">
+            Add Subscription
+          </button>
+        </div>
+        <div class="card-body">
+          <table
+            class="table stripped-alt table-responsive-sm table-xs-responsive table-hover table-outline mt-2 mb-5"
+            summary="List of projects"
+            aria-role="table"
+          >
+            <thead class="thead-light">
+              <tr>
+                <th>Category</th>
+                <th>Amount</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody class="">
+              <tr *ngFor="let item of subscriptions">
+                <td>
+                  <div>
+                    {{ item.category }}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    &#x20a6; {{ item.amount | number }}
+                  </div>
+                </td>
+                <td class="text-center">
+                  <button class="btn btn-theme-primary m-1" (click)="setSubscription(item, 'edit')">Edit</button>
+                  <button class="btn ca-btn-primary m-1" (click)="setSubscription(item)">Priviledges</button>
+                  <button class="btn btn-danger m-1" (click)="deleteSubscription(item.id)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div><!--/.row-->

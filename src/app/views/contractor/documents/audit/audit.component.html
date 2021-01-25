@@ -1,0 +1,112 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-10">
+    <div class="card">
+      <div class="card-header">{{ docType | titlecase }} Audit Document</div>
+      <div class="card-body">
+        <form
+          class="form-horizontal"
+          (ngSubmit)="updateDocument()"
+          [formGroup]="documentForm"
+        >
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="text-input"
+              >Document Description</label
+            >
+            <div class="col-md-9">
+              <input
+                type="text"
+                id="description"
+                formControlName="description"
+                name="description"
+                class="form-control"
+                placeholder="2019.2018.2017 Audited Account"
+              />
+            </div>
+          </div>
+          <div
+            class="row d-flex justify-content-center my-2"
+            *ngIf="uploadLoading"
+          >
+            <div class="spinner-grow text-success" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-4">
+              <div class="mx-auto my-1">
+                <img
+                  src="../../../../../assets/img/pdf.png"
+                  width="80%"
+                  height="120"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+            </div>
+            <div class="col-md-8 my-auto">
+              <input
+                type="file"
+                id="file-input"
+                name="file-input"
+                (change)="getUploadUrl($event)"
+              />
+              <div class="mt-1">
+                <small class="text-danger">
+                  Audited account for last 3 years, Document should be in pdf
+                  format and not more than 16MB.</small
+                >
+                <div class="col-md-12 my-3">
+                  <div class="col-md-12">
+                    <details>
+                      <summary>How to convert pictures to pdf</summary>
+                      <div>
+                        <iframe
+                          width="100%"
+                          height="300"
+                          src="https://www.youtube.com/embed/vMzJWzmiYZU"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen
+                        ></iframe>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button
+          class="btn btn-success mx-3"
+          type="button"
+          disabled
+          *ngIf="loading"
+        >
+          <span
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+          Loading...
+        </button>
+        <button
+          type="submit"
+          class="btn btn-success mx-3"
+          *ngIf="!loading"
+          (click)="updateDocument()"
+        >
+          {{ docType | titlecase }} Document
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/.row-->

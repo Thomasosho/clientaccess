@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <h2>Days Available</h2>
+          <div class="ml-auto">
+            <button
+              *ngIf="expertDays.id === 0"
+              class="btn bg-theme-primary text-white my-3 d-flex"
+              (click)="addExpertDays()"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Select days by clicking on them, then click this button to activate them."
+            >
+              Add Selected Days
+            </button>
+            <button
+              *ngIf="expertDays.id !== 0"
+              class="btn bg-theme-primary text-white my-3 d-flex"
+              (click)="updateExpertDays()"
+            >
+              Updated Selected Days
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card search container py-3 d-flex">
+            <div class="my-3 text-center">
+              <span
+                class="col-md-2 badge badge-pill"
+                [ngClass]="{
+                  'badge-active': expertDays.monday,
+                  'badge-secondary': !expertDays.monday
+                }"
+                (click)="toggleSelectedDay('monday')"
+                >Monday</span
+              >
+              <span
+                class="col-md-2 badge badge-pill"
+                [ngClass]="{
+                  'badge-active': expertDays.tuesday,
+                  'badge-secondary': !expertDays.tuesday
+                }"
+                (click)="toggleSelectedDay('tuesday')"
+                >Tuesday</span
+              >
+              <span
+                class="col-md-2 badge badge-pill"
+                [ngClass]="{
+                  'badge-active': expertDays.wednesday,
+                  'badge-secondary': !expertDays.wednesday
+                }"
+                (click)="toggleSelectedDay('wednesday')"
+                >Wednesday</span
+              >
+              <span
+                class="col-md-2 badge badge-pill"
+                [ngClass]="{
+                  'badge-active': expertDays.thursday,
+                  'badge-secondary': !expertDays.thursday
+                }"
+                (click)="toggleSelectedDay('thursday')"
+                >Thursday</span
+              >
+              <span
+                class="col-md-2 badge badge-pill"
+                [ngClass]="{
+                  'badge-active': expertDays.friday,
+                  'badge-secondary': !expertDays.friday
+                }"
+                (click)="toggleSelectedDay('friday')"
+                >Friday</span
+              >
+              <span
+                class="col-md-2 badge badge-pill"
+                [ngClass]="{
+                  'badge-active': expertDays.saturday,
+                  'badge-secondary': !expertDays.saturday
+                }"
+                (click)="toggleSelectedDay('saturday')"
+                >Saturday</span
+              >
+              <span
+                class="col-md-2 badge badge-pill"
+                [ngClass]="{
+                  'badge-active': expertDays.sunday,
+                  'badge-secondary': !expertDays.sunday
+                }"
+                (click)="toggleSelectedDay('sunday')"
+                >Sunday</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/.col-->
+    </div>
+    <!--/.row-->
+    <ngx-loading-x [show]="loading" [spinnerColor]="'#3a9d5d'"></ngx-loading-x>
+  </div>
+  

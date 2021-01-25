@@ -1,0 +1,100 @@
+<form (ngSubmit)="register()" [formGroup]="registerForm">
+  <p class="text-muted mb-5">Create your account as an expert</p>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="category">Profession</label>
+    </div>
+    <select class="custom-select" id="category" name="category" formControlName="category">
+      <option value="select category">--- Select Profession ---</option>
+      <option value="Electrical Engineer">Electrical Engineer</option>
+      <option value="Civil Engineer">Civil Engineer</option>
+      <option value="Mechanical Engineer">Mechanical Engineer</option>
+      <option value="Software Engineer">Software Engineer</option>
+      <option value="Structural Engineer">Structural Engineer</option>
+      <option value="Architect">Architect</option>
+    </select>
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="icon-envelope"></i></span>
+    </div>
+    <input
+      type="email"
+      class="form-control"
+      formControlName="email"
+      placeholder="Email"
+      required
+    />
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="icon-phone"></i></span>
+    </div>
+    <input
+      type="number"
+      class="form-control"
+      formControlName="phoneNumber"
+      placeholder="Phone Number"
+      required
+    />
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="icon-lock"></i></span>
+    </div>
+    <input
+      type="password"
+      class="form-control"
+      formControlName="password"
+      placeholder="Password"
+      autocomplete="new-password"
+      required
+    />
+  </div>
+  <div class="input-group mb-4">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="icon-lock"></i></span>
+    </div>
+    <input
+      type="password"
+      class="form-control"
+      formControlName="confirmPassword"
+      placeholder="Repeat password"
+      autocomplete="new-password"
+      required
+    />
+  </div>
+  <div class="input-group text-center my-4">
+    <div class="row check">
+      <input type="checkbox" id="terms"       formControlName="terms" name="terms" class="m-1" value="terms">
+      <label class="" for="terms">I have read the 
+        <a routerLink="/terms-and-conditions">
+          <span class="ca-text-primary text-uppercase font-weight-bold"
+            >Terms and conditions</span
+          >
+        </a>
+      </label>
+    </div>
+  </div>
+  <button
+    class="btn btn-block ca-btn-primary"
+    type="button"
+    disabled
+    *ngIf="loading"
+  >
+    <span
+      class="spinner-border spinner-border-sm"
+      role="status"
+      aria-hidden="true"
+    ></span>
+    Loading...
+  </button>
+  <button
+    type="submit"
+    class="btn btn-block ca-btn-primary"
+    [disabled]="!registerForm.valid"
+    *ngIf="!loading"
+  >
+    Create Account
+  </button>
+</form>

@@ -1,0 +1,56 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-10">
+    <div class="card">
+      <div class="card-header">Purchase Summary</div>
+      <div class="card-body">
+        <div class="form-horizontal">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="year">Tender</label>
+            <div class="col-md-9">
+              {{ tender.title }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="year">MDA</label>
+            <div class="col-md-9">
+              {{ tender.mdaName }}
+            </div>
+					</div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="year">Category</label>
+            <div class="col-md-9">
+              {{ tender.category }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="year">Lot Number</label>
+            <div class="col-md-9">
+              {{ tender.lotNumber }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="year">Amount</label>
+            <div class="col-md-9">
+              &#x20a6; {{ tender.applicationFee }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <angular4-paystack
+          [email]="email"
+          [amount]="tender.applicationFee * 100"
+          [ref]="ref"
+          [channels]="['card', 'bank']"
+          class="btn btn-theme-primary mx-3"
+          (paymentInit)="paymentInit($event)"
+          (close)="paymentFailure($event)"
+          (callback)="paymentSuccess($event)"
+        >
+          Make Payment
+        </angular4-paystack>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/.row-->

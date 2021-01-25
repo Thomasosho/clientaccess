@@ -1,0 +1,38 @@
+.pricing-list{
+  margin: 15px 0;
+}
+
+.plan-title {
+  font-size: 1.8rem;
+}
+
+.plan-focus {
+  -webkit-transform:scale(1.1); /* Safari and Chrome */
+  -moz-transform:scale(1.1); /* Firefox */
+  -ms-transform:scale(1.1); /* IE 9 */
+  -o-transform:scale(1.1); /* Opera */
+  transform:scale(1.1);
+  .card {
+    background-color: #007770 !important;
+    color: #fff;
+
+    .icon-alt {
+      color: #fff;
+    }
+  }
+}
+
+.plan-price {
+  text-align: center;
+  color: #007770;
+  padding: 2rem;
+
+  .pre-price, .post-price {
+    font-size: 0.9rem;
+  }
+
+  .price {
+    font-weight: bold;
+    font-size: 25px;
+  }
+}

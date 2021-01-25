@@ -1,0 +1,87 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-10">
+    <div class="card">
+      <div class="card-header">
+        <strong>Add Project</strong>
+      </div>
+      <div class="card-body">
+        <form class="form-horizontal" (ngSubmit)="addProject()" [formGroup]="projectForm">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="jobTitle">Job Title</label>
+            <div class="col-md-9">
+              <input type="text" id="jobTitle" formControlName="jobTitle" name="jobTitle" class="form-control" placeholder="Job Title">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="breifDescription">Job Description</label>
+            <div class="col-md-9">
+              <textarea type="text" id="breifDescription" formControlName="breifDescription" name="breifDescription" class="form-control" placeholder="Brief Description"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="text-input">Awardee</label>
+            <div class="col-md-9">
+              <input type="text" id="awardee" formControlName="awardee" name="awardee" class="form-control" placeholder="Awardee">
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center my-2" *ngIf="uploadAwardLoading">
+            <div class="spinner-grow text-success" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="file-input">Award Certificate (Optional)</label>
+            <div class="col-md-9 my-auto">
+              <input type="file" id="file-input" name="file-input" (change)="getUploadUrl($event, 'award')">
+            </div>
+          </div>
+
+          <div class="row d-flex justify-content-center my-2" *ngIf="uploadLoading">
+            <div class="spinner-grow text-success" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="file-input">Completion Certificate (Optional)</label>
+            <div class="col-md-9 my-auto">
+              <input type="file" id="file-input" name="file-input" (change)="getUploadUrl($event, 'completion')">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="date-input">Commencement Date</label>
+            <div class="col-md-9">
+              <input class="form-control" formControlName="startDate" id="date-input" type="date" name="date-input" placeholder="date">
+              <!-- <span class="help-block">Please enter a valid date</span> -->
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="date-input">Completion Date</label>
+            <div class="col-md-9">
+              <input class="form-control" formControlName="endDate" id="date-input" type="date" name="date-input" placeholder="date">
+              <!-- <span class="help-block">Please enter a valid date</span> -->
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success mx-3" type="button" disabled *ngIf="loading">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Loading...
+        </button>
+        <button type="submit" class="btn btn-success mx-3" *ngIf="!loading" (click)="addProject()">Add Project</button>
+      </div>
+    </div>
+  </div>
+</div><!--/.row-->

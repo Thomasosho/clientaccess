@@ -1,0 +1,99 @@
+@import "../../../scss/variables";
+
+.main-footer {
+  display: flex;
+  flex-direction: column;
+  // position: absolute;  
+  // bottom: 0;
+  // right: 0;
+  // left: 0;
+  font-size: 1.2rem;
+  line-height: 2.5rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+}
+
+div li {
+  list-style: none;
+  text-align: left;
+  h2{
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+
+  };
+  a{
+    font-size: 13px;
+  }
+}
+
+.main-footer, h2 {
+  // background-color: #205e1f;
+  color: #fff;
+
+  // h2{
+  //   co
+  // }
+}
+
+.footer-info {
+  text-align: left;
+  font-size: 14px;
+}
+
+div a {
+  color: #fff;
+}
+
+div a:hover {
+  color: #d1dada;
+}
+.footer-links {
+  color: #9ba508;
+}
+
+.main-footer{
+  position: relative;
+  min-height: 450px;
+  .curved{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: -70%;
+    background: url(/assets/img/landing/landing-curve-1.svg) no-repeat;
+    z-index: 0;
+  }
+  .content{
+    margin-top: 4em;
+  }
+}
+@media only screen and (max-width: 768px) {
+  footer {
+    text-align: center;
+  }
+
+  div li {
+    text-align: center;
+  }
+
+  .footer-info {
+    text-align: center;
+  }
+  .social-icons {
+    justify-content: center;
+  }
+  .main-footer{
+    position: relative;
+    .curved{
+      display: none;
+    }
+  }
+  .main-footer{
+    background-color: $ca-color-primary;
+  }
+}

@@ -1,0 +1,68 @@
+@import "../../../scss/variables";
+
+.card {
+  margin-bottom: 0.5em;
+  &__image {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 80px;
+    height: 80px;
+    border: 2px solid $ca-color-primary;
+    overflow: hidden;
+    transition: all 0.6s ease;
+    &:hover {
+      img {
+        transform: scale(1.4);
+      }
+    }
+  }
+  &__title {
+    color: #8a8a8a;
+    font-weight: bolder;
+  }
+  &__profile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    span {
+      color: #2c2c2c;
+      font-size: 14px;
+      &:hover {
+        padding: 0.4em;
+        background-color: lighten($ca-color-primary, 50);
+        border-radius: 2px;
+        color: $ca-color-primary;
+      }
+    }
+    div {
+      width: 33%;
+      font-size: 12px;
+      padding: 0.5em 1em;
+      small {
+        font-size: 10px;
+        font-weight: 700;
+      }
+      &:not(:last-child) {
+        border-right: 1px solid lighten($ca-color-primary, 40);
+      }
+      &:first-child {
+        padding-left: 0px;
+      }
+    }
+  }
+}
+@media (max-width: 575.98px) {
+  .card {
+    &__profile {
+      div {
+        width: 100%;
+        &:not(:last-child) {
+          border-right: none;
+        }
+        &:first-child {
+          padding: 0.5em 1em;
+        }
+      }
+    }
+  }
+}

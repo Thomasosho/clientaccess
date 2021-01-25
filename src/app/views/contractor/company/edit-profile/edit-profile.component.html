@@ -1,0 +1,211 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+          <div class="col-md-7 mx-auto">
+          <div class="row d-flex justify-content-center my-2" *ngIf="uploadLoading">
+              <div class="spinner-grow text-success" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div class="spinner-grow text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div class="spinner-grow text-info" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <div class="mx-auto  my-1">
+                  <img 
+                    [src]="company.logoUrl" 
+                    onError="this.src='../../../../assets/img/logo/logo-primary.svg'"
+                    width="100%" height="120" alt="" srcset="" />
+                </div>
+             </div>
+              <div class="col-md-8 my-auto">
+                <input type="file" id="file-input" name="file-input" (change)="getUploadUrl($event)" >
+                <div class="mt-1"><small class="text-danger"> (Logo should be in jpeg/jpg/png format and not more than 4MB).</small></div>
+              </div>
+            </div>
+            <div class="brand-card-body col-sm-12">
+              <div class="col-sm-6">
+                <div class="text-uppercase text-muted small">Company</div>
+                <div class="m-2">
+                  <input type="text" name="company" id="company" [(ngModel)]="company.companyName">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="text-uppercase text-muted small">Incorporated</div>                
+                <div class="form-group text-value d-flex m-2" >
+                  <label for="ccyear" class="mr-1">Year</label>
+                  <select class="form-control" id="ccyear" [(ngModel)]="company.dateOfIncorporation">
+                    <option value="select year">--- Select Year ---</option>
+                    <option *ngFor="let year of getYear(25)" [value]="year">
+                      {{year}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="card-body">
+        <!-- <br> -->
+        <table class="table table-responsive-sm table-xs-responsive mb-0">
+          <colgroup>
+            <col span="1" style="width: 20%;" />
+            <col span="1" style="width: 80%;" />
+          </colgroup>
+          
+          <tbody>
+            <tr>
+              <td><div class="font-weight-bold">Website</div></td>
+              <td>
+                <div class="m-2 lg">
+                  <input type="text" name="website" id="website" placeholder="website" [(ngModel)]="company.website">
+                </div>
+            </td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">Address</div></td>
+              <td>
+
+                <div class="form-group row">
+                  <!-- <label class="col-md-3 col-form-label" for="textarea-input">Textarea</label> -->
+                  <div class="col-md-9">
+                    <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" placeholder="Address" [(ngModel)]="company.address"></textarea>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">Classification</div></td>
+              <td>
+                <div class="form-group row">
+                  <!-- <label class="col-md-3 col-form-label" for="select1">Select</label> -->
+                  <div class="col-md-9">
+                    <select id="select1" name="select1" class="form-control" [(ngModel)]="company.classification">
+                      <option value="0">Please select</option>
+                      <option *ngFor="let item of classification" [value]="item.classification">{{ item.classification }}</option>
+                      <option value="others">Others</option>
+                    </select>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="company.classification === 'others'">
+              <td><div class="font-weight-bold">Specify Classification</div></td>
+              <td>
+                <div class="m-2 lg">
+                  <input #newClassification type="text" name="classfication" id="classfication" placeholder="Classification" [(ngModel)]="company.others">
+                </div>
+            </td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">Mission & Vision Statement</div></td>
+              <td>
+                <div class="form-group row">
+                  <!-- <label class="col-md-3 col-form-label" for="textarea-input">Textarea</label> -->
+                  <div class="col-md-9">
+                    <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" placeholder="Mission and Vision" [(ngModel)]="company.missionAndVisionStatement"></textarea>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">What We Do</div></td>
+              <td>
+                <div class="form-group row">
+                  <!-- <label class="col-md-3 col-form-label" for="textarea-input">Textarea</label> -->
+                  <div class="col-md-9">
+                    <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" placeholder="What we do" [(ngModel)]="company.whatWeDo"></textarea>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">Username</div></td>
+              <td><div>{{ email }}</div></td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">email</div></td>
+              <td><div>{{ email }}</div></td>
+            </tr>
+            <tr>
+              <td><div></div></td>
+              <td>
+                <div>
+                  <div class="col-md-8 col-xl mt-3 mb-5 pb-5" >
+                    <button type="button" class="btn  btn-success active" aria-pressed="true" (click)="updateCompanyProfile()">Update Company Profile</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">Contact Person 1</div></td>
+              <td>
+                <div>
+                  <div class="form-group text-value d-flex m-2" >
+                    <input type="text" name="firstname" id="firstname" placeholder="Firstname" [(ngModel)]="contact1.firstName">
+                  </div>
+                   <div class="form-group text-value d-flex m-2" >
+                    <input type="text" name="lastname" id="lastname" placeholder="Lastname" [(ngModel)]="contact1.lastName">
+                  </div>
+                   <div class="form-group text-value d-flex m-2" >
+                    <input type="text" name="phone" id="phone" placeholder="09034424334" [(ngModel)]="contact1.phoneNumber">
+                  </div>
+                   <div class="form-group text-value d-flex m-2" >
+                    <input type="text" name="email" id="email" placeholder="your@email.com" [(ngModel)]="contact1.email">
+                  </div>
+                </div>
+                <div *ngIf="contact1.companyId !== 0">
+                  <div class="col-md-10 col-xl my-4" >
+                    <button type="button" class="btn btn-md btn-success active" aria-pressed="true" (click)="updateContactPerson(contact1)">Update Contact 1</button>
+                  </div>
+                </div>
+                <div *ngIf="contact1.companyId === 0">
+                  <div class="col-md-10 col-xl my-4" >
+                    <button type="button" class="btn btn-md btn-success active" aria-pressed="true" (click)="addContact(contact1)">Add Contact</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="font-weight-bold">Contact Person 2</div></td>
+              <td>
+                <div>
+                  <div class="form-group text-value d-flex m-2" >
+                    <input type="text" name="firstname" id="firstname" placeholder="Firstname" [(ngModel)]="contact2.firstName">
+                  </div>
+                   <div class="form-group text-value d-flex m-2" >
+                    <input type="text" name="lastname" id="lastname" placeholder="Lastname" [(ngModel)]="contact2.lastName">
+                  </div>
+                   <div class="form-group text-value d-flex m-2" >
+                    <input type="text" name="phone" id="phone" placeholder="09034424334" [(ngModel)]="contact2.phoneNumber">
+                  </div>
+                   <div class="form-group text-value d-flex m-2" >
+                    <input type="text" name="email" id="email" placeholder="your@email.com" [(ngModel)]="contact2.email">
+                  </div>
+                </div>
+                <div *ngIf="contact2.companyId !== 0">
+                  <div class="col-md-10 col-xl my-4" >
+                    <button type="button" class="btn  btn-success active" aria-pressed="true" (click)="updateContactPerson(contact2)">Update Contact 2</button>
+                  </div>
+                </div>
+                
+                <div *ngIf="contact2.companyId === 0">
+                  <div class="col-md-10 col-xl my-4" >
+                    <button type="button" class="btn  btn-success active" aria-pressed="true" (click)="addContact(contact2)">Add Contact</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/.row-->
+<ngx-loading-x [show]="updateLoading" [spinnerColor]="'#3a9d5d'"></ngx-loading-x>

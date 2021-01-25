@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h2>Trade</h2>
+      </div>
+      <div class="card-body">
+        <div class="card search container py-3 d-flex">
+          <div class="searchbar">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Add Trade..."
+              [(ngModel)]="skill"
+            />
+          </div>
+          <button class="btn  bg-theme-primary text-white my-3 d-flex" (click)="addSkill()">
+            Add Trade
+            <i class="fa fa-plus ml-2 h-100 my-auto" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="container">
+          <div id="skills">
+            <h2 class="heading">Your Trade</h2>
+            <ul>
+              <li *ngFor="let trade of artisanSkills"> 
+                <button type="button" class="ml-2 close pull-right" aria-label="Close" (click)="deleteTrade(trade.id)">  
+                  <span aria-hidden="true">×</span>  
+                </button>
+                {{ trade.skillSet }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="my-5 text-center" *ngIf="loading">
+          <span>Fetching skills...</span>
+        </div>
+        <div class="my-5 text-center" *ngIf="!loading && artisanSkills.length === 0">
+          <span>No skills added, add skills to view them here.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->
+<ngx-loading-x [show]="loading" [spinnerColor]="'#3a9d5d'"></ngx-loading-x>

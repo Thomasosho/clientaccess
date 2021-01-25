@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-12">
+    <table
+      class="table table-responsive-sm table-xs-responsive table-hover table-outline mb-0"
+      summary="List of projects"
+      aria-role="table"
+    >
+      <tbody class="mx-auto">
+        <tr></tr>
+        <tr>
+          <td>
+            <div class="d-flex justify-content-center">
+              <img
+                [src]="staff.imageUrl"
+                width="200"
+                height="200"
+                alt=""
+                srcset=""
+              />
+            </div>
+          </td>
+          <td>
+            <div class="profile-header bg-theme-primary text-white">
+              {{ staff.firstName }} {{ staff.lastName }} -
+              {{ staff.designation }}
+            </div>
+            <div class="font-weight-bold text-theme-primary py-2 text-left">
+              Phone No: {{ staff.phoneNumber }} | Email: {{ staff.email }} 
+            </div>
+            <div class="font-weight-bold text-theme-primary py-2 text-left">
+              Experience: {{ staff.yearsOfExperience }} {{staff.yearsOfExperience > 1 ? 'years': 'year' }} | Sex:
+              {{ staff.gender }}
+            </div>
+            <div>
+              <div class="py-2">
+                <h3>Profile</h3>
+                <div>{{ staff.profile }}</div>
+              </div>
+              <div class="py-2">
+                <h3>Qualification</h3>
+                <div>{{ staff.qualification }}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

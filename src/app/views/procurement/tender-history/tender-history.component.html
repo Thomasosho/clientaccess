@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h2>Tender History({{allTender.length}})</h2>
+      </div>
+      <div class="card-body">
+        <table
+          class="table stripped table-responsive-sm table-xs-responsive table-hover table-outline mb-0"
+          summary="List of projects"
+          aria-role="table"
+        >
+          <thead class="thead-light">
+            <tr class="text-center">
+              <th>MDA</th>
+              <th>Tender</th>
+              <th>Category</th>
+              <th>Lot Number</th>
+              <th>Application Date</th>
+              <th>Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr *ngFor="let tender of allTender">
+              <td>
+                <div>
+                  {{ tender.mdaName }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ tender.title }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ tender.category }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ tender.lotNumber }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ tender.dateAdded }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ tender.applicationFee }}
+                </div>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-theme-primary" (click)="download(tender)">Download</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="my-5 text-center" *ngIf="loading">
+          <span>Fetching tender history...</span>
+        </div>
+        <div
+          class="my-5 text-center"
+          *ngIf="!loading && allTender.length === 0"
+        >
+          <span
+            >You have not applied for any tender yet, submit an application to
+            view them here.</span
+          >
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->

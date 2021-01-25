@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-md-10 mx-auto">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h2>Certificates(2)</h2>
+        <!-- <button class="btn bg-theme-primary text-white m-2 my-sm-0">
+          Add Professional Certificate
+        </button> -->
+      </div>
+      <div class="card-body">
+        <!-- <div class="table-responsive"> -->
+        <table
+          class="table stripped table-responsive-sm table-xs-responsive table-hover table-outline mb-0"
+          summary="List of projects"
+          aria-role="table"
+        >
+          <colgroup>
+            <col span="1" style="width: 40%;" />
+            <col span="1" style="width: 60%;" />
+          </colgroup>
+          <thead class="thead-light">
+            <tr>
+              <th>Type</th>
+              <th>Certificate</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr>
+              <td>
+                <div>Award Certificate</div>
+              </td>
+              <td>
+                <div>
+                  <img
+                    *ngIf="project.awardCertificateUrl"
+                    [src]="project.awardCertificateUrl"
+                    width="300"
+                    height="250"
+                    alt=""
+                    srcset=""
+                  />
+                  <img
+                    *ngIf="!project.awardCertificateUrl"
+                    src="../../../../../assets/img/no-image-available.jpg"
+                    width="300"
+                    height="250"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </td>
+              <td class="text-center">
+                <a [href]="project.awardCertificateUrl" target="_blank" download="award-certificate.jpg">
+                  <button class="btn btn-theme-primary" [disabled]="!project.awardCertificateUrl">View</button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div>Completion Certificate</div>
+              </td>
+              <td>
+                <div>
+                  <img
+                    *ngIf="this.project.completionCertificateUrl"
+                    [src]="this.project.completionCertificateUrl"
+                    width="300"
+                    height="250"
+                    alt=""
+                    srcset=""
+                  />
+                  <img
+                    *ngIf="!this.project.completionCertificateUrl"
+                    src="../../../../../assets/img/no-image-available.jpg"
+                    width="300"
+                    height="250"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </td>
+              <td class="text-center">
+                <a [href]="this.project.completionCertificateUrl" download="completion-certificate.jpg">
+                  <button class="btn btn-theme-primary" [disabled]="!this.project.completionCertificateUrl">View</button>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->

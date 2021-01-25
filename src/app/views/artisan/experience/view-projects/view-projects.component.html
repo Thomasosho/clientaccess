@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-4 my-3" *ngFor="let project of projectImages">
+    <div class="container">
+      <div class="card-inner p-2">
+        <div class="card-img">
+          <img [src]="project.imageUrl" alt="equipment image" srcset="" />
+          <div class="card-img-content">
+            <div class="title p-2">{{ project.title }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,150 @@
+<section class="row">
+  <ng-container *ngIf="profile; else loading">
+    <div class="col-md-3 order-1 order-md-2">
+      <div class="card">
+        <div class="card-body">
+          <div class="card__image">
+            <img
+              [src]="profile.imageUrl"
+              width="100%"
+              height="100%"
+              alt=""
+              onerror="this.src='../../../../assets/img/no-image-available.jpg'"
+            />
+          </div>
+          <div
+            class="w-100 text-center mt-4"
+            *ngIf="profile.firstName || profile.lastName"
+          >
+            <h4>{{ profile.firstName }} {{ profile.lastName }}</h4>
+            <p>{{ profile.designation }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 order-2 order-md-1">
+      <div class="card">
+        <div class="card-body p-1">
+          <div class="card__profile px-2 py-4 rounded">
+            <div class="row profile">
+              <div class="col-md-4">
+                <h4>
+                  <i class="fa fa-envelope-o mr-2"></i>
+                  Email
+                </h4>
+                <p>{{ profile.email || "not available" }}</p>
+              </div>
+
+              <div class="col-md-4">
+                <h4>
+                  <i class="fa fa-phone mr-2"></i>
+                  Phone
+                </h4>
+                <p>{{ profile.phoneNumber || "not available" }}</p>
+              </div>
+              <div class="col-md-4">
+                <h4>
+                  <i class="fa fa-user mr-2"></i>
+                  Gender
+                </h4>
+                <p>{{ profile.gender || "not available" }}</p>
+              </div>
+              <div class="col-md-4">
+                <h4>
+                  <i class="fa fa-briefcase mr-2"></i>
+                  Years of Experience
+                </h4>
+                <p>
+                  {{
+                    profile.yearsOfExperience > 1
+                      ? profile.yearsOfExperience + " years"
+                      : profile.yearsOfExperience + " year" || "not avaible"
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body p-1">
+          <div class="p-2 mt-3">
+            <h4>
+              Profile
+            </h4>
+            <p>
+              {{ profile.profile || "Profile not available" }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</section>
+<section class="row">
+  <div class="col-md-9">
+    <ng-container *ngIf="qualifications$ | async as qualifications">
+      <div class="card">
+        <div class="card-header px-3 d-flex justify-content-between">
+          <h4>
+            Qualifications
+          </h4>
+          <a
+            class="ca-text-primary"
+            [routerLink]="['/contractor/staff/qualification/upload']"
+          >
+            Add Qualification
+            <i class="ml-2 fa fa-long-arrow-right"></i>
+            </a>
+        </div>
+        <div class="card-body pt-0 px-2">
+          <div class="w-100 p-2" *ngIf="qualifications.length === 0">
+            No qualifications available
+          </div>
+          <div class="card__products p-2" *ngFor="let input of qualifications">
+            <div class="row align-items-center">
+              <div class="col-auto mt-2 mt-md-0" *ngIf="input.imageUrl">
+                <div class="product__image">
+                  <img
+                    [src]="input.imageUrl || input.logoUrl"
+                    width="100%"
+                    height="100%"
+                    alt=""
+                    onerror="this.src='../../../../../assets/img/no-image-available.jpg'"
+                  />
+                </div>
+              </div>
+
+              <div
+                class="col-md-3 mt-2 mt-md-0"
+                *ngIf="input.name || input.clientName"
+              >
+                <h4>
+                  Name of Qualification
+                </h4>
+                <p>{{ input.name || input.clientName }}</p>
+              </div>
+              <div class="col-md-3 mt-2 mt-md-0" *ngIf="input.startYear">
+                <h4>
+                  Start Year
+                </h4>
+                {{ input.startYear || "" }}
+              </div>
+              <div class="col-md-3 mt-2 mt-md-0" *ngIf="input.endYear">
+                <h4>
+                  End Year
+                </h4>
+                {{ input.endYear || "" }}
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>
+
+<ng-template #loading>
+  <i class="fa fa-spinner fa-spin mr-2"></i> fetching...
+</ng-template>

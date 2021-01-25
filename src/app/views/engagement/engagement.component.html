@@ -1,0 +1,117 @@
+<section class="row">
+  <div class="col-12">
+    <h3>Engage with {{ type | titlecase }}</h3>
+  </div>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-3">
+        <input
+          type="text"
+          placeholder="Name"
+          class="ca-input w-100 mt-2"
+          [(ngModel)]="filter.fullName"
+        />
+      </div>
+      <div class="col-md-3">
+        <input
+          type="text"
+          placeholder="Category"
+          class="ca-input w-100 mt-2"
+          [(ngModel)]="filter.category"
+        />
+      </div>
+      <div class="col-md-auto">
+        <button
+          class="btn ca-btn-primary d-block d-inline ml-auto mr-auto mt-3 m-md-2"
+        >
+          <i class="fa fa-search"></i> search
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <ng-container *ngIf="result$ | async as allResult; else loading">
+      <div class="mb-3 text-center text-md-left">
+        <small>
+          Showing {{ (allResult | filterBy: filter).length }} Result{{
+            allResult.length > 1 ? "s" : ""
+          }}
+        </small>
+      </div>
+      <div
+        class="ca-text-primary"
+        *ngIf="(allResult | filterBy: filter).length === 0"
+      >
+        <p> <i class="fa fa-meh-o mr-3"></i>No matching results</p>
+      </div>
+
+      <div class="card" *ngFor="let result of allResult | filterBy: filter">
+        <div
+          class="card-body d-flex flex-wrap justify-content-between align-items-center"
+        >
+          <div class="col-md-2">
+            <div class="card__image m-auto m-md-0">
+              <img
+                [src]="result.logoUrl"
+                width="100"
+                height="100"
+                alt=""
+                onerror="this.src='../../../assets/img/no-image-available.jpg'"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-8 text-center text-md-left mt-4 mt-md-0">
+            <h4 class="card__title">{{ result.fullName }}</h4>
+            <div class="card__profile mt-3">
+              <div>
+                <small class="d-block"
+                  ><i class="fa fa-envelope-o mr-1 ca-text-primary"></i> Email
+                </small>
+                {{ result.email || "not available " }}
+              </div>
+              <div>
+                <small class="d-block">
+                  <i class="fa fa-phone mr-1 ca-text-primary"></i> Phone Number
+                </small>
+
+                {{ result.phoneNumber || "not available" }}
+              </div>
+              <div>
+                <small class="d-block">
+                  <i class="fa fa-briefcase mr-1 ca-text-primary"></i> Category
+                </small>
+                {{ result.category || "not available" }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mt-4 mt-md-0 text-center">
+            <div class="py-2">
+              <a
+                class="ca-text-primary"
+                [routerLink]="['/contractor/connect/profile']"
+                [queryParams]="{ type: type, id: result.id }"
+                (click)="profileHandler(result)"
+              >
+                <small
+                  >view {{ type == 'suppliers' ? 'supplier' : 'profile'}}
+                  <i class="ml-2 fa fa-long-arrow-right"></i></small
+              ></a>
+            </div>
+            <button
+              class="btn mt-2 ca-btn-outline-primary btn-block btn-sm px-2"
+              (click)="engageHandler(result)"
+            >
+              Engage
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>
+
+<ng-template #loading>
+  <i class="fa fa-spinner fa-spin mr-2"></i> fetching...
+</ng-template>

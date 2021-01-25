@@ -1,0 +1,158 @@
+<div id="receiptholder" class="my-5">
+  <div class="receipt-wrapper">
+    <div id="receipt" class="effect">
+      <div id="receipt-top">
+        <div class="logo">
+          <img
+            src="../../../../assets/img/logo/logo-primary.svg"
+            alt="logo"
+            srcset=""
+          />
+        </div>
+        <div class="info">
+          <p class="mt-2">Plot 112, Maitama Zone 2,<br />Abuja, Nigeria</p>
+          <p>sales@contraccess.com</p>
+          <p>09024878207</p>
+        </div>
+        <div class="title">
+          <h1>Payment Receipt</h1>
+          <h2>#{{ receipt.referenceNum }}</h2>
+          <p class="mt-2">Date issued: {{ today | date: "medium" }}</p>
+        </div>
+      </div>
+      <div id="receipt-mid">
+        <div class="client-info">
+          <div class="mb-2 py-1 client">Customer Information</div>
+          <div class="p-2">
+            <!-- <div class="clientlogo">
+              <img
+                src="../../../../assets/img/logo/logo.png"
+                alt="client-img"
+                srcset=""
+              />
+            </div> -->
+            <div class="info p-2">
+              <div class="cust">
+                <h2>
+                  Name
+                </h2>
+                <h2>
+                  <strong>{{ company.companyName }}</strong>
+                </h2>
+              </div>
+              <div class="cust">
+                <div>
+                  Email
+                </div>
+                <div>
+                  {{ user.email || "" }}
+                </div>
+              </div>
+              <!-- <div class="cust">
+                <div>
+                  Phone Number
+                </div>
+                <div>
+                  {{ user.phoneNumber || ''}}
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End Invoice Mid-->
+
+      <div id="receipt-bot" class="py-5">
+        <div class="payment-info">
+          <div class="mb-2 py-1 payment-detail">Payment Details</div>
+        </div>
+        <div id="table" class="mb-5">
+          <table>
+            <colgroup>
+              <col span="1" style="width: 15%;" />
+              <col span="1" style="width: 20%;" />
+              <col span="1" style="width: 45%;" />
+              <col span="1" style="width: 20%;" />
+            </colgroup>
+            <thead class="thead-light">
+              <tr class="tabletitle">
+                <th class="">
+                  <h2>Date</h2>
+                </th>
+                <th class="">
+                  <h2>Reference</h2>
+                </th>
+                <th class="">
+                  <h2>Description</h2>
+                </th>
+                <th class="">
+                  <h2>Amount</h2>
+                </th>
+              </tr>
+            </thead>
+
+            <tr class="service">
+              <td>
+                <p>{{ receipt.dateCreated | date: "mediumDate" }}</p>
+              </td>
+              <td>
+                <p>{{ receipt.referenceNum }}</p>
+              </td>
+              <td>
+                <p>{{ receipt.type }}</p>
+              </td>
+              <td>
+                <p>₦ {{ receipt.amount - 3000 | number: "1.2-2" }}</p>
+              </td>
+            </tr>
+            <tr class="service">
+              <td></td>
+              <td></td>
+              <td class="">
+                <p>Charges</p>
+              </td>
+              <td class="payment">
+                <p>₦ {{ 2250| number: "1.2-2" }}</p>
+              </td>
+            </tr>
+            <tr class="service">
+              <td></td>
+              <td></td>
+              <td class="">
+                <p>VAT</p>
+              </td>
+              <td class="payment">
+                <p>₦ {{ 750 | number: "1.2-2" }}</p>
+              </td>
+            </tr>
+            <tr class="tabletitle">
+              <td></td>
+              <td></td>
+              <td class="">
+                <h2>Total</h2>
+              </td>
+              <td class="payment">
+                <h2>₦ {{ receipt.amount | number: "1.2-2" }}</h2>
+              </td>
+            </tr>
+          </table>
+          <!-- <p class="my-1 text-right">Inclusive of VAT</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="py-3 w-50 mx-auto">
+      <div class="d-flex justify-content-center">
+        <button
+          type="button"
+          class="btn btn-theme-primary"
+          [useExistingCss]="true"
+          printTitle="Contraccess Receipt"
+          printSectionId="receipt"
+          ngxPrint
+        >
+          Print Receipt
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

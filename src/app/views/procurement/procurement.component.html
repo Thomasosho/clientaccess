@@ -1,0 +1,129 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div *ngIf="!isHome" class="card-header">
+        <h2>Procurements</h2>
+      </div>
+      <div class="card-body">
+        <div class="card search container py-3 d-flex">
+          <div class="searchbar">
+            <!-- <input type="text" class="search-input" placeholder="Search..." [(ngModel)]="filter.title || filter.mdaName || filter.category" /> -->
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search..."
+              [(ngModel)]="filter.title"
+            />
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </div>
+          <div class="d-flex">
+            <div class="form-group text-value d-flex m-2">
+              <label for="ccyear" class="mr-1">Year: </label>
+              <select
+                class="form-control"
+                id="ccyear"
+                [(ngModel)]="filter.publishDate"
+              >
+                <option value="">---Select Year---</option>
+                <option *ngFor="let year of getYear(5)" [value]="year">{{
+                  year
+                }}</option>
+              </select>
+            </div>
+            <div class="form-group text-value d-flex m-2">
+              <label for="ccyear" class="mr-1">Month: </label>
+              <select
+                class="form-control"
+                id="ccyear"
+                [(ngModel)]="filter.publishDate"
+              >
+                <option value="">---Select Month---</option>
+                <option
+                  *ngFor="let month of getMonths()"
+                  [value]="month.value"
+                  >{{ month.name }}</option
+                >
+              </select>
+            </div>
+          </div>
+        </div>
+        <table
+          class="table stripped-alt table-responsive-sm table-xs-responsive table-hover table-outline mb-0"
+          summary="List of countracts"
+          aria-role="table"
+        >
+          <thead class="thead-light">
+            <tr class="text-center">
+              <th>Tender</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tender of allTender | filterBy: filter">
+              <td>
+                <div class="text-left">
+                  <div class="text-center  my-2">
+                    <h2 class="my-1">{{ tender.mdaName }}</h2>
+                    <h3 class="my-1">{{ tender.title }}</h3>
+                  </div>
+                  <!-- <h3 class="sub-title">{{tender.openingInfo}}</h3> -->
+                  {{ tender.collectionOfBidDocument }}
+                  <div class="text-center small font-weight-bold text-theme-primary py-2">
+                    Published: {{ tender.publishDate | date: "mediumDate" }} |
+                    Expires: {{ tender.expiryDate | date: "mediumDate" }}
+                  </div>
+                </div>
+                <div class="text-center my-2">
+                  <button
+                    class="btn btn-success mx-2"
+                    (click)="setTender(tender)"
+                  >
+                    View Tender
+                  </button>
+                  <button
+                    class="btn btn-theme-primary mx-2"
+                    *ngIf="checkExpired(tender.expiryDate) && !checkProcured(tender.id)"
+                    (click)="setTender(tender, 'procure')"
+                  >
+                    Procure Tender
+                  </button>
+                  <button
+                    class="btn btn-theme-primary disabled mx-2"
+                    *ngIf="checkProcured(tender.id)"
+                  >
+                    Procured
+                  </button>
+                  <button
+                    class="btn btn-warning disabled"
+                    *ngIf="!checkExpired(tender.expiryDate)"
+                  >
+                    Expired
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="my-5 text-center" *ngIf="loading">
+          <i class="fa fa-spinner fa-spin mr-2"></i>
+          <span>Fetching Tender...</span>
+        </div>
+        <div
+          class="my-5 text-center"
+          *ngIf="!loading && allTender.length === 0"
+        >
+          <span>No tender added, add tender to view them here.</span>
+        </div>
+        <div
+          class="my-5 text-center"
+          *ngIf="!loading && (allTender | filterBy: filter).length === 0"
+        >
+          <span>No matching results.</span>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->

@@ -1,0 +1,42 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-10">
+    <div class="card">
+      <div class="card-header">
+        <strong>Add Project</strong>
+      </div>
+      <div class="card-body">
+        <form class="form-horizontal" (ngSubmit)="addExperiences()" [formGroup]="experiencesForm">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="jobTitle">Institution</label>
+            <div class="col-md-9">
+              <input type="text" id="name" formControlName="name" name="name" class="form-control" placeholder="Institution">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="date-input">Start Date</label>
+            <div class="col-md-9">
+              <input class="form-control" formControlName="startYear" id="date-input" type="date" name="date-input" placeholder="date">
+              <!-- <span class="help-block">Please enter a valid date</span> -->
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="date-input">End Date</label>
+            <div class="col-md-9">
+              <input class="form-control" formControlName="endYear" id="date-input" type="date" name="date-input" placeholder="date">
+              <!-- <span class="help-block">Please enter a valid date</span> -->
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success mx-3" type="button" disabled *ngIf="loading">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Loading...
+        </button>
+        <button type="submit" class="btn btn-success mx-3" *ngIf="!loading" (click)="addExperiences()">Add Project</button>
+        <input type="reset" class="btn btn-danger" value="Reset">
+      </div>
+    </div>
+  </div>
+</div><!--/.row-->
+<ngx-loading-x [show]="loading" [spinnerColor]="'#3a9d5d'"></ngx-loading-x>

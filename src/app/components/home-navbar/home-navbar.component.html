@@ -1,0 +1,49 @@
+<div
+  class="fixed-top"
+  #navbar
+  [class]="isScrolled ? 'ca-bg-primary__transparent blur' : ''"
+>
+  <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-2">
+    <div class="container">
+      <a routerLink="/" class="navbar-brand"
+        ><img src="../../../assets/img/logo/logo-white.svg" alt=""
+      /></a>
+      <!-- <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link"  [routerLink]="['dashboard']" routerLinkActive="router-link-active">Dashboard</a>
+        </li>
+      </ul> -->
+      <i
+        class="navbar-toggler"
+        data-toggle="collapse"
+        data-target="#nav-content"
+        aria-controls="nav-content"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="fa fa-bars text-white"></span>
+      </i>
+
+      <div class="collapse navbar-collapse" id="nav-content">
+        <ul class="navbar-nav ml-auto">
+          <!-- <button
+            class="btn text-white"
+          >
+            <i class="fa fa-search"></i>
+             search
+          </button> -->
+          <button class="btn text-white" [routerLink]="['/register']">
+            Sign Up
+          </button>
+          <button
+            class="btn ca-btn-outline"
+            [routerLink]="['/login']"
+            routerLinkActive="router-link-active"
+          >
+            Sign In
+          </button>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

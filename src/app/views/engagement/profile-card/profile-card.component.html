@@ -1,0 +1,63 @@
+<ng-container *ngIf="inputObservable | async as inputArray">
+  <div class="card">
+    <div class="card-header px-3">
+      <h4>{{ (type ==='artisans' && title === 'skills'? 'trade' : title) | titlecase }}</h4>
+    </div>
+    <div class="card-body pt-0 px-2">
+      <div class="w-100 p-2" *ngIf="!inputArray.length">
+        No {{type ==='artisans' && title === 'skills'? 'trade' : title }} available
+      </div>
+      <div class="card__products p-2" *ngFor="let input of inputArray">
+        <div class="row align-items-center" *ngIf="title !== 'skills' && title !=='trade'">
+          <div class="col-auto mt-2 mt-md-0" *ngIf="input.imageUrl">
+            <div class="product__image" >
+              <img
+                [src]="input.imageUrl || input.logoUrl"
+                width="100%"
+                height="100%"
+                alt=""
+                onerror="this.src='../../../../assets/img/no-image-available.jpg'"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-3 mt-2 mt-md-0" *ngIf="input.name || input.clientName">
+            <h4>
+              {{getKeyByValue(input, input.name || input.clientName) | titlecase}}
+            </h4>
+            <p>{{ input.name || input.clientName}}</p>
+          </div>
+          <div class="col-md-3 mt-2 mt-md-0" *ngIf="input.institutionName">
+            <h4>
+              Institution
+            </h4>
+            {{ input.institutionName }}
+          </div>
+          <div class="col-md-3 mt-2 mt-md-0" *ngIf="input.endDate ">
+            <h4>
+              Year
+            </h4>
+            {{ input.endDate || "" }}
+          </div>
+          <div class="col-md-3 mt-2 mt-md-0" *ngIf="input.endYear">
+            <h4>
+              End Year
+            </h4>
+            {{ input.endYear || "" }}
+          </div>
+          <div class="col-md-3 mt-2 mt-md-0" *ngIf="input.startYear">
+            <h4>
+            Start Year
+            </h4>
+            {{ input.startYear || "" }}
+          </div>
+        </div>
+        <div class="row" *ngIf="title === 'skills'">
+          <div class="col-4">
+            <p>{{ input.skillSet }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

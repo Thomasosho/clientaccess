@@ -1,0 +1,293 @@
+<section class="row">
+  <ng-container *ngIf="tender; else loading">
+    <div class="col-md-12 order-2 order-md-1">
+      <div class="card">
+        <div class="card-body p-1">
+          <div class="card__profile px-2 py-4 rounded">
+            <div class="row tender">
+              <div class="col-md-12">
+                <h3 class="text-center">
+                  {{ tender.title || "not available" }}
+                </h3>
+              </div>
+
+              <div class="container d-flex m-4">
+                <div class="col-md-3">
+                  <h4>
+                    Category
+                  </h4>
+                  <p>{{ tender.category || "not available" }}</p>
+                </div>
+                <div class="col-md-3">
+                  <h4>
+                    Date Published
+                  </h4>
+                  <p>
+                    {{
+                      tender.publishDate | date: "mediumDate" || "not available"
+                    }}
+                  </p>
+                </div>
+                <div class="col-md-3">
+                  <h4>
+                    Expiry Date
+                  </h4>
+                  <p>
+                    {{
+                      tender.expiryDate | date: "mediumDate" || "not available"
+                    }}
+                  </p>
+                </div>
+                <div class="col-md-3">
+                  <h4>
+                    Application Fee
+                  </h4>
+                  <p>&#x20a6; {{ tender.applicationFee }}</p>
+                </div>
+              </div>
+              <div class="mx-auto my-3">
+                <button
+                  class="btn btn-theme-primary mx-2"
+                  *ngIf="!tender.procured"
+                  (click)="setTender(tender)"
+                >
+                  Procure Tender
+                </button>
+                <button
+                  disabled
+                  class="btn btn-theme-primary mx-2"
+                  *ngIf="tender.procured"
+                >
+                  Procured
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h4>
+            MDA Name
+          </h4>
+        </div>
+        <div class="card-body p-1">
+          <div class="p-2">
+            <p>
+              {{ tender.mdaName || "not available" }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h4>
+            Collection of Tender Documents
+          </h4>
+        </div>
+        <div class="card-body p-1">
+          <div class="p-2">
+            <p>
+              {{ tender.collectionOfBidDocument || "not available" }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h4>
+            Projects
+          </h4>
+        </div>
+        <div class="card-body p-1">
+          <div class="p-2">
+            <ng-container *ngIf="lots$ | async as lots">
+              <div class="card">
+                <div class="card-header">
+                  <h4>
+                    Tender Lots
+                  </h4>
+                </div>
+                <div class="card-body pt-0 px-2">
+                  <div class="w-100 p-2" *ngIf="lots.length === 0">
+                    No lots available
+                  </div>
+                  <table
+                    class="table stripped-alt table-responsive-sm table-xs-responsive table-hover table-outline mt-2"
+                    summary="List of projects"
+                    aria-role="table"
+                  >
+                    <colgroup>
+                      <col span="1" style="width: 15%;" />
+                      <col span="1" style="width: 20%;" />
+                      <col span="1" style="width: 65%;" />
+                    </colgroup>
+                    <thead class="thead-light">
+                      <tr>
+                        <th>Lot Number</th>
+                        <th>Lot Category</th>
+                        <th>Lot Description</th>
+                      </tr>
+                    </thead>
+                    <tbody class="card__products p-2">
+                      <tr *ngFor="let item of lots">
+                        <td>
+                          <div>
+                            {{ item.lotNumber }}
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            {{ item.category }}
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            {{
+                              item.description || "Description not available"
+                            }}
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- <div class="card__products p-2" *ngFor="let input of lots">
+                      <ul class="row align-items-center">
+                        <li
+                          class="pr-5"
+                          *ngIf="input.required && input.requirement !== ''"
+                        >
+                          <div>{{ input.requirement }}</div>
+                        </li>
+                      </ul>
+                    </div> -->
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h4>
+            Submission Information
+          </h4>
+        </div>
+        <div class="card-body p-1">
+          <div class="p-2">
+            <p>
+              {{ tender.closingInfo || "not available" }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="card">
+            <div class="card-header">
+                <h4>
+                    Introduction
+                </h4>
+              </div>
+          <div class="card-body p-1">
+            <div class="p-2">
+              <p>
+                {{ tender.collectionOfBidDocument || "not available"  }}
+              </p>
+            </div>
+          </div>
+        </div> -->
+      <div class="card">
+        <div class="card-header">
+          <h4>
+            Closing Date and Opening Information
+          </h4>
+        </div>
+        <div class="card-body p-1">
+          <div class="p-2">
+            <p>
+              {{ tender.openingInfo || "not available" }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="card">
+            <div class="card-header">
+                <h4>
+                    Introduction
+                </h4>
+              </div>
+          <div class="card-body p-1">
+            <div class="p-2">
+              <p>
+                {{ tender.collectionOfBidDocument || "not available"  }}
+              </p>
+            </div>
+          </div>
+        </div> -->
+    </div>
+  </ng-container>
+</section>
+<section class="row">
+  <div class="col-md-12">
+    <ng-container *ngIf="requirements$ | async as requirements">
+      <div class="card">
+        <div class="card-header">
+          <h4>
+            Eligibility Requirements
+          </h4>
+        </div>
+        <div class="card-body pt-0 px-2">
+          <div class="w-100 p-2" *ngIf="requirements.length === 0">
+            No requirements available
+          </div>
+          <div class="card__products p-2" *ngFor="let input of requirements">
+            <ul class="row align-items-center">
+              <li
+                class="pr-5"
+                *ngIf="input.required && input.requirement !== ''"
+              >
+                <div>{{ input.requirement }}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>
+<section class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>
+          Notes
+        </h4>
+      </div>
+      <div class="card-body p-1">
+        <div class="p-2">
+          <p>
+            {{ tender.notes || "not available" }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h4>
+          Disclaimer
+        </h4>
+      </div>
+      <div class="card-body p-1">
+        <div class="p-2">
+          <p>
+            {{ tender.disclaimer || "not available" }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #loading>
+  <i class="fa fa-spinner fa-spin mr-2"></i> fetching...
+</ng-template>

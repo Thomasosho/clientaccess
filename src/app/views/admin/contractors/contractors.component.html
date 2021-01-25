@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h2>Contractors</h2>
+        <!-- <button class="btn bg-theme-primary text-white m-2 my-sm-0" [routerLink]="['/documents/upload/' + docType]">
+          UPLOAD {{ docType  | uppercase}} DOCUMENT
+        </button> -->
+      </div>
+      <div class="card-body">
+        <!-- <div class="table-responsive"> -->
+        <table
+          class="table stripped-alt table-responsive-sm table-xs-responsive table-hover table-outline mb-0"
+          summary="List of projects"
+          aria-role="table"
+        >
+          <thead class="thead-light">
+            <tr>
+              <th>Company</th>
+              <th>Email</th>
+              <!-- <th>Phone Number</th> -->
+              <th>Website</th>
+              <th>Date Registered</th>
+              <!-- <th>Documents</th> -->
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr *ngFor="let user of users">
+              
+              <td>
+                <div>
+                  {{ user.companyName }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ user.email || '' }}
+                </div>
+              </td>
+              <!-- <td>
+                <div>
+                  {{ user.phoneNumber || '' }}
+                </div>
+              </td> -->
+              <td>
+                <div>
+                  {{ user.website }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ user.regDate | date:'medium' }}
+                </div>
+              </td>
+              <!-- <td class="text-center">
+                <button class="btn btn-theme-primary" [routerLink]="['/admin/contractor-documents/' + user.id]" >View</button>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+        <div class="my-5 text-center" *ngIf="!loading && users.length === 0">
+          <span>No contractors registered yet.</span>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->

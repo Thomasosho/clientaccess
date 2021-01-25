@@ -1,0 +1,151 @@
+<section class="bg-white">
+  <div class="container-fluid ca-registration-section">
+    <div class="mt-3">
+      <a routerLink="/">
+        <img width="200px" src="/assets/img/logo/logo-primary.svg" alt="" />
+      </a>
+    </div>
+    <div class="row ca-registration-container">
+      <div class="">
+        <h1>Create your account</h1>
+        <ul class="nav nav-pills mt-5 mb-1" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link active text-uppercase"
+              id="pills-home-tab"
+              data-toggle="pill"
+              href="#pills-contractor"
+              role="tab"
+              aria-controls="pills-home"
+              aria-selected="true"
+              >contractor</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              id="pills-profile-tab"
+              data-toggle="pill"
+              href="#pills-mda"
+              role="tab"
+              aria-controls="pills-profile"
+              aria-selected="false"
+              >MDA</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link text-uppercase"
+              id="pills-contact-tab"
+              data-toggle="pill"
+              href="#pills-supplier"
+              role="tab"
+              aria-controls="pills-contact"
+              aria-selected="false"
+              >Supplier</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link text-uppercase"
+              id="pills-contact-tab"
+              data-toggle="pill"
+              href="#pills-artisan"
+              role="tab"
+              aria-controls="pills-contact"
+              aria-selected="false"
+              >Artisan</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link text-uppercase"
+              id="pills-contact-tab"
+              data-toggle="pill"
+              href="#pills-expert"
+              role="tab"
+              aria-controls="pills-contact"
+              aria-selected="false"
+              >Expert</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link text-uppercase"
+              id="pills-contact-tab"
+              data-toggle="pill"
+              href="#pills-admin"
+              role="tab"
+              aria-controls="pills-contact"
+              aria-selected="false"
+              >Admin</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="w-100"></div>
+      <div class="col-md-4">
+        <div class="tab-content border-0" id="pills-tabContent">
+          <div
+            class="tab-pane fade show active"
+            id="pills-contractor"
+            role="tabpanel"
+            aria-labelledby="pills-home-tab"
+          >
+            <app-register-contractor></app-register-contractor>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pills-mda"
+            role="tabpanel"
+            aria-labelledby="pills-profile-tab"
+          >
+            <app-register-mda></app-register-mda>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pills-supplier"
+            role="tabpanel"
+            aria-labelledby="pills-contact-tab"
+          >
+            <app-register-supplier></app-register-supplier>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pills-artisan"
+            role="tabpanel"
+            aria-labelledby="pills-contact-tab"
+          >
+            <app-register-artisan></app-register-artisan>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pills-expert"
+            role="tabpanel"
+            aria-labelledby="pills-contact-tab"
+          >
+            <app-register-expert></app-register-expert>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pills-admin"
+            role="tabpanel"
+            aria-labelledby="pills-contact-tab"
+          >
+            <app-register-admin></app-register-admin>
+          </div>
+        </div>
+        <div class="mt-3 pt-2">
+          <div class="h-100 my-auto">
+            Already have an account ?
+            <a routerLink="/login">
+              <span class="ca-text-primary text-uppercase font-weight-bolder"
+                >Sign in</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

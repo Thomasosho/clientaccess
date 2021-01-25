@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h2>Referees({{referees.length}})</h2>
+        <button class="btn bg-theme-primary text-white m-2 my-sm-0" [routerLink]="['/artisan/add-referee']">
+          Add Referee
+        </button>
+      </div>
+      <div class="card-body">
+        <!-- <div class="table-responsive"> -->
+        <table
+          class="table stripped table-responsive-sm table-xs-responsive table-hover table-outline mb-0"
+          summary="List of projects"
+          aria-role="table"
+        >
+        <colgroup>
+          <col span="1" style="width: 25%;" />
+          <col span="1" style="width: 25%;" />
+          <col span="1" style="width: 25%;" />
+          <col span="1" style="width: 25%;" />
+        </colgroup>
+          <thead class="thead-light">
+            <tr>
+              <th>Referee Image</th>
+              <th>Name</th>
+              <th>Phone Number</th>
+              <th class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr *ngFor="let item of referees">
+              <td>
+                <div>
+                  <img
+                    [src]="item.imageUrl"
+                    width="150"
+                    height="150"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.name }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.phoneNumber }}
+                </div>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-theme-primary" (click)="setDocument(item)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="my-5 text-center" *ngIf="loading">
+          <span>Fetching Referees...</span>
+        </div>
+        <div class="my-5 text-center" *ngIf="!loading && referees.length === 0">
+          <span>No referees added, add referees to view them here.</span>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->

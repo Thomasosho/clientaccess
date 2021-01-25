@@ -1,0 +1,119 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h2>Subscriptions</h2>
+        <button
+          class="btn bg-theme-primary text-white my-sm-0 col-sm-12 col-md-4"
+          [routerLink]="['/billing/add-subscription']"
+          *ngIf="!loading && userSubscriptions.length === 0"
+        >
+          Add Subscription
+        </button>
+      </div>
+      <div class="card-body">
+        <table
+          class="table stripped table-responsive-sm table-xs-responsive table-hover table-outline mb-0"
+          summary="List of projects"
+          aria-role="table"
+        >
+          <thead class="thead-light">
+            <tr>
+              <th>Subscription</th>
+              <th>Status</th>
+              <th>Registration Date</th>
+              <th>Expiry Date</th>
+              <th class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sub of userSubscriptions">
+              <td>
+                <div>{{ sub.category || "-" }}</div>
+              </td>
+              <td>
+                <div
+                  class="badge"
+                  ngClass="{{
+                    isActive(sub.endDate) ? 'badge-success' : 'badge-light'
+                  }}"
+                >
+                  {{ isActive(sub.endDate) ? "active" : "expired" }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ sub.startDate || "-" }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ sub.endDate || "-" }}
+                </div>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-theme-primary" (click)="setSub(sub, template)">Upgrade</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="text-center my-5" *ngIf="loading">
+          <i class="fa fa-spinner fa-spin mr-2"></i> fetching...
+        </div>
+        <div
+          class="my-5 text-center"
+          *ngIf="!loading && userSubscriptions.length === 0"
+        >
+          <span
+            >You have not subscribed to any plan yet, you can view your
+            subscriptions here when you subscribe.</span
+          >
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->
+
+
+<ng-template #template>  
+  <div class="modal-header">  
+    <h4 class="modal-title pull-left">Select Plan</h4>  
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+      <span aria-hidden="true">×</span>  
+    </button>  
+  </div>  
+  <div class="modal-body">
+    
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label" for="months">Plans</label>
+      <div class="col-md-9">
+        <select
+          class="form-control"
+          id="months"
+          name="months"
+          (change)="setnewSub($event.target.value)"
+        >
+          <option *ngFor="let item of subscriptions" [value]="item.id"> {{ item.category }} (₦ {{item.amount | number}})</option>
+        </select>
+      </div>
+    </div>
+  </div>  
+  <div class="modal-footer">  
+    <!-- <button type="button" class="btn btn-warning" (click)="modalRef.hide()">Upgrade</button>   -->
+    <angular4-paystack
+    [email]="email"
+    [amount]="amount * 100"
+    [ref]="ref"
+    [channels]="['card', 'bank']"
+    class="btn ca-btn-primary"
+    (paymentInit)="paymentInit($event)"
+    (close)="paymentFailure($event)"
+    (callback)="paymentSuccess($event)"
+  >
+    Upgrade
+  </angular4-paystack>
+  </div>  
+</ng-template> 

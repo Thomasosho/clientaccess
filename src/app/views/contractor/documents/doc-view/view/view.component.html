@@ -1,0 +1,17 @@
+<div class="container overflow-auto">
+  <img
+    *ngIf="doctype !== 'audit'"
+    [src]="document.imageUrl"
+    width="100%"
+    height="100%"
+    alt="document"
+    srcset=""
+  />
+  <div class="pdf-viewer overflow-auto" *ngIf="doctype === 'audit'">
+    <pdf-viewer
+      [src]="document.imageUrl"
+      [render-text]="true"
+      style="display: block;"
+    ></pdf-viewer>
+  </div>
+</div>

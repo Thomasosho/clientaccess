@@ -1,0 +1,50 @@
+<div class="container card">
+    <div class="row">
+      <div class="card-header font-weight-bold ca-text-primary d-flex justify-content-between">
+        <h3>Notifications</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="">
+          <div class="py-3">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="" *ngFor="let notification of notifications | paginate: { itemsPerPage: 7, currentPage: page }">
+                  <div class="container card">
+                    <div class="row notification-bg py-2 px-4">
+                      <div class="d-flex">
+                        <div class="icon">
+                          <i *ngIf="notification.type === 'Engage'" class="fa fa-2x fa-handshake-o py-2 px-2"></i>
+                          <i *ngIf="notification.type !== 'Engage'" class="fa fa-2x fa-info-circle py-2 px-2"></i>
+                        </div>
+                        <div class="mx-3">
+                          <div class="notification">
+                            <div class="ca-text-primary"> {{notification?.title}} </div>
+                            <div class="message"> {{notification?.message}} </div>
+                            <div class="timestamp mt-1">{{notification?.dateAdded | date}}</div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div *ngIf="notifications.length == 0 && !loading " class="my-4 d-flex justify-content-center">
+                  <div class="">
+                    <div class="text-center my-4 ca-text-primary ">
+                      <i class="fa fa-3x fa-bell icon" aria-hidden="true"></i>
+                    </div>
+                    <h4 class="text-center my-3">Nothing here, notifications empty.</h4>
+                  </div>
+                </div>
+              </div>
+              <pagination-controls class="pages" (pageChange)="page = $event" *ngIf="notifications.length > 0"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<ngx-loading-x [show]="loading" [spinnerColor]="'#3a9d5d'"></ngx-loading-x>
+  

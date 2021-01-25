@@ -1,0 +1,263 @@
+<div class="animated fadeIn mb-5 pb-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <form class="form-horizontal" action="#" role="form">
+            <div class="row py-5">
+              <div class="col-md-4 w-100">
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <div class="form-img text-center">
+                      <img
+                        alt="profile picture"
+                        width="180px"
+                        height="150px"
+                        [src]="profile.logoUrl"
+                        onerror="this.src='../../../../assets/img/avatars/6.jpg'"
+                      />
+                    </div>
+                    <div class="text-center mt-3 mb-2">
+                      <button class="btn btn-theme-primary">
+                        <label class="file-upload my-auto h-100">
+                          <input type="file" (change)="getUploadUrl($event)" />
+                          <i class="fa fa-cloud-upload"></i> Upload
+                        </label>
+                      </button>
+                    </div>
+                    <br />
+                    <div>
+                      <table class="table table-striped table-hover">
+                        <tbody>
+                          <tr>
+                            <td style="width: 60%;">Status</td>
+                            <td>
+                              <div
+                                class="badge"
+                                ngClass="{{
+                                  isActive
+                                    ? 'badge-success'
+                                    : 'badge-info'
+                                }}"
+                              >
+                                {{
+                                  isActive ? "active" : "inactive"
+                                }}
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Member Since</td>
+                            <td>
+                              {{ profile?.dateCreated | date: "mediumDate" }}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <h3 class="">General Information</h3>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label">Business Name</label>
+                  <div class="col-md-9 controls">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <input
+                          [(ngModel)]="profile.businessName"
+                          name="businessName"
+                          type="text"
+                          class="form-control"
+                          placeholder="Business Name"
+                        />
+                      </div>
+                    </div>
+                    <!-- row -->
+                  </div>
+                  <!-- col-sm-10 -->
+                </div>
+                <!-- form-group -->
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label">Category</label>
+                  <div class="col-md-9 controls">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <input
+                          [(ngModel)]="profile.category"
+                          name="category"
+                          type="text"
+                          class="form-control"
+                          placeholder="Category"
+                        />
+                      </div>
+                    </div>
+                    <!-- row -->
+                  </div>
+                  <!-- col-sm-10 -->
+                </div>
+                <!-- form-group -->
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label"
+                    >Business Description</label
+                  >
+                  <div class="col-md-9 controls">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <textarea
+                          [(ngModel)]="profile.briefDescription"
+                          name="briefDescription"
+                          rows="3"
+                          class="form-control"
+                          placeholder="Brief business description"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <!-- row -->
+                  </div>
+                  <!-- col-sm-10 -->
+                </div>
+                <!-- form-group -->
+                <hr />
+                <h3 class="">Contact Information</h3>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label">Address</label>
+                  <div class="col-md-9 controls">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <input
+                          [(ngModel)]="profile.address"
+                          name="address"
+                          type="text"
+                          class="form-control"
+                          placeholder="Address"
+                        />
+                      </div>
+                    </div>
+                    <!-- row -->
+                  </div>
+                  <!-- col-sm-10 -->
+                </div>
+                <!-- form-group -->
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label">Contact Email</label>
+                  <div class="col-md-9 controls">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <input
+                          [(ngModel)]="profile.email"
+                          name="email"
+                          type="text"
+                          class="form-control"
+                          placeholder="Email"
+                        />
+                      </div>
+                    </div>
+                    <!-- row -->
+                  </div>
+                  <!-- col-sm-10 -->
+                </div>
+                <!-- form-group -->
+
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label">Mobile Phone</label>
+                  <div class="col-md-9 controls">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <input
+                          [(ngModel)]="profile.phoneNumber"
+                          name="phoneNumber"
+                          type="text"
+                          class="form-control"
+                          placeholder="mobile phone"
+                        />
+                      </div>
+                    </div>
+                    <!-- row -->
+                  </div>
+                  <!-- col-sm-10 -->
+                </div>
+                <!-- form-group -->
+
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label">Instagram</label>
+                  <div class="col-md-9 controls">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <input
+                          [(ngModel)]="profile.instagram"
+                          name="instagram"
+                          type="text"
+                          class="form-control"
+                          placeholder="Instagram"
+                        />
+                      </div>
+                    </div>
+                    <!-- row -->
+                  </div>
+                  <!-- col-sm-10 -->
+                </div>
+                <!-- form-group -->
+
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label">Facebook</label>
+                  <div class="col-md-9 controls">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <input
+                          [(ngModel)]="profile.facebook"
+                          name="facebook"
+                          type="text"
+                          class="form-control"
+                          placeholder="facebook"
+                        />
+                      </div>
+                    </div>
+                    <!-- row -->
+                  </div>
+                  <!-- col-sm-10 -->
+                </div>
+                <!-- form-group -->
+
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label">Twitter</label>
+                  <div class="col-md-9 controls">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <input
+                          [(ngModel)]="profile.twitter"
+                          name="twitter"
+                          type="text"
+                          class="form-control"
+                          placeholder="twitter"
+                        />
+                      </div>
+                    </div>
+                    <!-- row -->
+                  </div>
+                  <!-- col-sm-10 -->
+                </div>
+                <!-- form-group -->
+                <div class="d-flex justify-content-center my-5 pt-3">
+                  <button
+                    (click)="updateProfile()"
+                    class="btn btn-lg btn-theme-primary"
+                  >
+                    <span class="menu-icon"
+                      ><i class="fa fa-fw fa-check"></i
+                    ></span>
+                    Update Profile
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>
+<ngx-loading-x [show]="loading" [spinnerColor]="'#3a9d5d'"></ngx-loading-x>

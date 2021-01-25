@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h2>All Documents(2)</h2>
+      </div>
+      <div class="card-body">
+        <!-- <div class="table-responsive"> -->
+        <table
+          class="table stripped table-responsive-sm table-xs-responsive table-hover table-outline mb-0"
+          summary="List of projects"
+          aria-role="table"
+        >
+          <colgroup>
+            <col span="1" style="width: 20%;" />
+            <col span="1" style="width: 35%;" />
+            <col span="1" style="width: 15%;" />
+            <col span="1" style="width: 15%;" />
+            <col span="1" style="width: 15%;" />
+          </colgroup>
+          <thead class="thead-light">
+            <tr>
+              <th>Document</th>
+              <th>Type</th>
+              <th>Document Description</th>
+              <th>Certificate Number</th>
+              <th>Year</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr *ngFor="let item of documents">
+              <td>
+                <div>
+                  <img
+                    [src]="item.imageUrl"
+                    width="150"
+                    height="150"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.type }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.description || 'Description not available' }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.certificateNum }}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ item.year }}
+                </div>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-warning" (click)="setDocument(item)">Edit</button>
+                <button class="btn btn-theme-primary m-2" (click)="openModal(template, item)">View</button>
+                <!-- <a [href]="item.imageUrl" target="_blank" [download]="item.certificateNum +'-'+ item.year +'.jpg'">
+                  <button class="btn btn-theme-primary m-2" [disabled]="!item.imageUrl">View</button>
+                </a> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- </div> -->
+      </div>
+      <ng-template #template>  
+        <div class="modal-header">  
+          <h4 class="modal-title pull-left">Document</h4>  
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+            <span aria-hidden="true">×</span>  
+          </button>  
+        </div>  
+        <div class="modal-body">
+          <app-view [doctype]="docType"></app-view>
+        </div>  
+        <div class="modal-footer">  
+          <button type="button" class="btn btn-warning" (click)="modalRef.hide()">Close</button>  
+        </div>  
+      </ng-template>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->

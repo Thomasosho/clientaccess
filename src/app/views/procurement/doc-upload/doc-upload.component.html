@@ -1,0 +1,102 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-10">
+    <div class="card">
+      <div class="card-header">Upload Bank Refferal</div>
+      <div class="card-body">
+        <form class="form-horizontal" (ngSubmit)="uploadDocument()">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="year">Tender</label>
+            <div class="col-md-9">
+              {{ tender.title }}
+            </div>
+          </div>
+          <div class="form-group row" *ngIf="lots$ | async as lots">
+            <label class="col-md-3 col-form-label" for="lot">Tender Lot</label>
+            <div class="col-md-9">
+              <select
+                class="form-control"
+                id="lot"
+                name="lot"
+								(change)="setTenderLot($event.target.value)"
+              >
+               <option value="" selected disabled hidden>Select Lot</option>
+                <option *ngFor="let item of lots" [value]="item.lotNumber">{{ item.lotNumber }} {{item.category ? ' - ' + item.category : '' }}</option>
+              </select>
+            </div>
+          </div>
+          <div
+            class="row d-flex justify-content-center my-2"
+            *ngIf="uploadLoading"
+          >
+            <div class="spinner-grow text-success" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="file-input">File</label>
+            <div class="col-md-9">
+              <input
+                #docUpload
+                type="file"
+                id="file-input"
+                name="file-input"
+                (change)="getUploadUrl($event)"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button
+          class="btn btn-success mx-3"
+          type="button"
+          disabled
+          *ngIf="loading"
+        >
+          <span
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+          Loading...
+        </button>
+        <button
+          [disabled]="uploadSuccessful"
+          type="submit"
+          class="btn btn-success mx-3"
+          *ngIf="!loading"
+          (click)="uploadDocument()"
+        >
+          Upload Bank Refferal (jpg or PDF)
+        </button>
+        <button
+          type="submit"
+          class="btn btn-theme-primary mx-3"
+          *ngIf="!loading"
+          (click)="nextProcess()"
+        >
+          Proceed
+        </button>
+        <!-- <angular4-paystack
+          *ngIf="uploadSuccessful"
+          [email]="email" 
+          [amount]="tender.applicationFee * 100" 
+          [ref]="ref"
+          [channels]="['card', 'bank']" 
+          class="btn btn-theme-primary mx-3" 
+          (paymentInit)="paymentInit($event)"
+          (close)="paymentFailure($event)"
+          (callback)="paymentSuccess($event)">
+          Make Payment (&#x20a6;{{ tender.applicationFee }})
+        </angular4-paystack> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!--/.row-->

@@ -1,0 +1,76 @@
+<ng-container *ngIf="user">
+  <div class="card">
+    <div
+      class="card-body d-flex flex-wrap justify-content-between align-items-center"
+    >
+      <div class="col-md-1 col-sm-12">
+        <div class="card__image">
+          <img
+            width="100%"
+            height="100%"
+            [src]="user ? user.logoUrl : ''"
+            onerror="this.src='../../../assets/img/no-image-available.jpg'"
+          />
+        </div>
+      </div>
+      <!-- <div class="col-md-6 col-sm-12 mt-3 d-flex flex-wrap justify-content-between align-items-center"> -->
+      <div class="col-md-2 col-sm-12 info">
+        <h4>
+          Name
+        </h4>
+        <p>
+          {{
+            user.companyName ||
+              user.businessName ||
+              user.fullName ||
+              "not available"
+          }}
+        </p>
+      </div>
+      <div class="col-md-2 col-sm-12 info">
+        <h4>
+          {{ user.email ? "Email" : "Website" }}
+        </h4>
+        <p>
+          {{ user.email || user.website || "not available" }}
+        </p>
+      </div>
+      <div class="col-md-2 col-sm-12 info">
+        <h4>
+          Phone
+        </h4>
+        <p>
+          {{
+            user.phoneNumber
+              ? user.phoneNumber[0] == "0"
+                ? user.phoneNumber
+                : "0" + user.phoneNumber
+              : null || "not available"
+          }}
+        </p>
+      </div>
+      <div class="col-md-2 col-sm-12 info">
+        <h4>
+          {{ type === userType.contractor ? "classification" : "Category" }}
+        </h4>
+        <p>
+          {{
+            (type === userType.contractor
+              ? user.classification
+              : user.category) || "not available"
+          }}
+        </p>
+      </div>
+      <!-- </div> -->
+      <div class="col-md-3 col-sm-12 mt-3">
+        <button class="btn ca-btn-outline-primary" 
+          [routerLink]="['/contractor/connect/profile']"
+          [queryParams]="{ type: type, id: user.id }"
+          (click)="profileHandler(user)"
+        >
+          View Profile <i class="fa fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

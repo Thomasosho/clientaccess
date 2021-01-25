@@ -1,0 +1,96 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-10">
+    <div class="card">
+      <div class="card-header">
+        <strong> {{ subscription.category }} Priviledges</strong>
+      </div>
+      <div class="card-body">
+        <form
+          class="form-horizontal"
+          (ngSubmit)="addpriviledge()"
+          [formGroup]="priviledgeForm"
+        >
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="privilege"
+              >Priviledge</label
+            >
+            <div class="col-md-9">
+              <input
+                type="text"
+                id="privilege"
+                formControlName="privilege"
+                name="privilege"
+                class="form-control"
+                placeholder="Priviledge"
+              />
+            </div>
+          </div>
+          <div class="card-footer">
+            <button
+              class="btn btn-success mx-3"
+              type="button"
+              disabled
+              *ngIf="loading"
+            >
+              <span
+                class="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              Loading...
+            </button>
+            <button
+              type="submit"
+              class="btn btn-success mx-3"
+              *ngIf="!loading"
+              (click)="addpriviledge()"
+            >
+              {{ isAdd ? "Add Priviledge" : "Update Priviledge" }}
+            </button>
+          </div>
+        </form>
+        <div class="my-5">
+          <table
+            class="table stripped-alt table-responsive-sm table-xs-responsive table-hover table-outline mt-2 mb-5"
+            summary="List of projects"
+            aria-role="table"
+          >
+            <thead class="thead-light">
+              <tr>
+                <th>S/N</th>
+                <th>Priviledge</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody class="">
+              <tr *ngFor="let item of priviledges; let count = index">
+                <td>
+                  <div>
+                    {{ count + 1 }}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{ item.privilege }}
+                  </div>
+                </td>
+                <td class="text-center">
+                  <button class="btn btn-theme-primary m-1" (click)="editPriviledge(item)">
+                    Edit
+                  </button>
+                  <button class="btn btn-danger m-1" (click)="deletePriviledge(item.id)">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div *ngIf="priviledges.length == 0" class="my-5 text-center">
+            No priviledges added yet.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/.row-->

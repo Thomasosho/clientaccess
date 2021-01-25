@@ -1,0 +1,486 @@
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+
+// If you want to add something do it here
+@import "custom";
+
+body {
+  font-size: 1rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  // color: #03a84e;
+  color: #c74923;
+}
+
+textarea.form-control {
+  height: 6em;
+}
+.app-header .navbar-toggler {
+  min-width: 50px;
+  padding: 0.25rem 0;
+
+  &:nth-child(2) {
+    display: none !important;
+  }
+}
+
+.app-header .nav-item .nav-link {
+  padding-top: 0;
+  padding-bottom: 0;
+  background: 0;
+  border: 0;
+  font-weight: bold;
+  color: lighten($ca-color-primary, 15);
+
+  &:hover {
+    color: darken($ca-color-primary, 2%);
+  }
+
+  &:focus {
+    color: darken($ca-color-primary, 2%);
+  }
+  
+  &:active {
+    color: darken($ca-color-primary, 2%);
+  }
+}
+
+.sidebar .nav-link .nav-icon,
+.sidebar .nav-link.active .nav-icon {
+  color: #fff;
+}
+
+
+
+.text-theme-primary {
+  color: #c74923;
+}
+
+.bg-theme-primary {
+  // background-color: #03A84E;
+  background-color: #c74923;
+}
+
+.btn {
+  border-radius: 10em;
+  padding: 7px 30px;
+}
+
+.btn-theme-primary {
+  background-color: #c74923;
+  color: #fff;
+  border-color: #c74923;
+}
+
+.btn-theme-primary:hover {
+  color: #fff;
+  background-color: rgba(199, 73, 35, 0.7);
+  // background-color: #3a9d5d;
+  // border-color: #3a9d5d;
+  border-color: rgba(199, 73, 35, 0.7);
+}
+.app-body .main {
+  // background-image: url("../assets/img/bg/bg-print.png");
+  background: lighten($ca-color-primary, 52%);
+}
+
+.sub-title {
+  // color: rgba(3, 168, 78, 0.7);
+  color: rgba(199, 73, 35, 0.7);
+}
+
+.stripped tr:nth-child(even) {
+  background-color: #e6ffe6;
+}
+
+.stripped-alt tr:nth-child(even) {
+  background-color: lighten($ca-color-primary, 50);
+}
+
+.lg input {
+  width: 300px;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+small {
+  font-size: 70%;
+}
+
+@media screen and (max-width: 575px) {
+  .table-xs-responsive th,
+  .table-xs-responsive td {
+    width: 100% !important;
+    display: block !important;
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .table.table-sm-responsive th,
+  .table.table-sm-responsive td {
+    width: 100% !important;
+    display: block !important;
+    box-sizing: border-box;
+  }
+
+  .app-header .navbar-brand {
+    left: 10%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .table.table-sm-responsive th,
+  .table.table-sm-responsive td {
+    width: 100% !important;
+    display: block !important;
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .table.table-sm-responsive th,
+  .table.table-sm-responsive td {
+    width: 100% !important;
+    display: block !important;
+    box-sizing: border-box;
+  }
+}
+
+@mixin hover($color, $text-color: #fff) {
+  &:hover {
+    color: $text-color;
+    background-color: lighten($color, 10);
+    border-color: lighten($color, 10);
+    cursor: pointer;
+  }
+}
+@mixin button($color, $text-color: #fff) {
+  color: $text-color;
+  background-color: $color;
+  border-color: $color;
+  border-radius: 10em;
+  padding: 7px 30px;
+  @include hover($color, $text-color);
+}
+@mixin button-line(
+  $color,
+  $text-color: #fff,
+  $hover-bg-color: #000,
+  $hover-text-color: #fff
+) {
+  color: $text-color;
+  background-color: transparent;
+  border-color: $color;
+  border-radius: 10em;
+  padding: 7px 30px;
+  @include hover($hover-bg-color, $hover-text-color);
+}
+
+@mixin input($color: #ccc) {
+  background-color: transparent;
+  outline: none;
+  border: 1px solid $color;
+  padding: 5px 10px;
+  color: $color;
+  border-radius: 10em;
+  &::placeholder {
+    color: darken($color, 20);
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+
+  &::-ms-input-placeholder {
+    color: $color;
+  }
+}
+@mixin sidebar-style($color) {
+  background: linear-gradient(
+      transparentize($color, 0.05),
+      transparentize($color, 0.05)
+    ),
+    url(/assets/img/bg/Abuja-city.jpg);
+  background-size: cover;
+  .nav-link {
+    &.active {
+      // background: $color;
+      color: #fff;
+      background: darken($color, 5%);
+    }
+    &:hover {
+      color: #fff;
+      background: darken($color, 2%);
+    }
+  }
+}
+@mixin dashboard-cards($color) {
+  .card {
+    .card-body i {
+      border-radius: 5px;
+      background-color: $color !important;
+    }
+
+    .icon-alt {
+      // background: none;
+      color: $color;
+    }
+    .h5 {
+      color: transparentize($color, 0.4) !important;
+    }
+    .h2 {
+      color: $color !important;
+      font-size: 40px;
+      font-weight: bolder;
+      padding: 1rem;
+    }
+    .card-footer i {
+      color: $color;
+    }
+  }
+}
+@mixin theme-styling($color) {
+  .table {
+    &.table-outline {
+      border: 1px solid #efefef;
+      border-radius: 5px;
+    }
+    td{
+          border-top: 1px solid #efefef;
+    }
+    .thead-light th {
+      color: #5c6873;
+      color: lighten($ca-color-primary, 2);
+      background-color: #fff;
+      border: 0;
+    }
+    tbody {
+      font-size: 14px;
+      h3 {
+        font-size: 16px;
+        color: $color;
+      }
+    }
+  }
+  .btn-theme-primary {
+    @include button($color, #fff);
+  }
+}
+.ca-btn-secondary {
+  @include button($ca-color-secondary, $ca-color-primary);
+}
+.ca-btn-primary,
+.btn-theme-primary,
+button.bg-theme-primary {
+  @include button($ca-color-primary, $ca-color-secondary);
+}
+.ca-btn-outline {
+  @include button-line(#fff, #fff, $ca-color-secondary, $ca-color-primary);
+}
+.ca-btn-outline-primary {
+  @include button-line(
+    $ca-color-primary,
+    $ca-color-primary,
+    $ca-color-primary
+  );
+}
+.ca-input {
+  @include input();
+}
+.ca-input-white {
+  @include input(#fff);
+}
+.ca-input-primary {
+  @include input($ca-color-primary);
+}
+.ca-bg-secondary {
+  background-color: $ca-color-secondary;
+}
+.ca-bg-primary {
+  background-color: $ca-color-primary;
+}
+.ca-bg-primary__transparent {
+  background-color: transparentize($ca-color-primary, 0.5);
+}
+.ca-text-secondary {
+  color: $ca-color-secondary;
+}
+.ca-text-primary {
+  color: $ca-color-primary;
+}
+.app-body {
+  .sidebar {
+    background: $ca-color-primary;
+    .nav-link.active {
+      background: $ca-color-primary;
+    }
+  }
+  &__contractor .sidebar {
+    @include sidebar-style($ca-color-contractor);
+  }
+  &__artisan .sidebar {
+    @include sidebar-style($ca-color-artisan);
+  }
+  &__expert .sidebar {
+    @include sidebar-style($ca-color-expert);
+  }
+  &__mda .sidebar {
+    @include sidebar-style($ca-color-mda);
+  }
+  &__supplier .sidebar {
+    @include sidebar-style($ca-color-supplier);
+  }
+  &__admin .sidebar {
+    @include sidebar-style($ca-color-admin);
+  }
+}
+.dashboard {
+  .card {
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px 2px transparentize(#000, 0.98);
+    
+    .card-body i {
+      border-radius: 5px;
+    }
+    .h5 {
+      font-size: 30px;
+      font-weight: bolder;
+    }
+    .card-footer {
+      background-color: #fff;
+      border: none;
+    }
+  }
+  &__contractor {
+    @include dashboard-cards($ca-color-contractor);
+  }
+  &__artisan {
+    @include dashboard-cards($ca-color-artisan);
+  }
+  &__mda {
+    @include dashboard-cards($ca-color-mda);
+  }
+  &__supplier {
+    @include dashboard-cards($ca-color-supplier);
+  }
+  &__admin {
+    @include dashboard-cards($ca-color-admin);
+  }
+}
+.breadcrumb {
+  border: 0;
+  background-color: transparent;
+  margin-left: 12px;
+  a {
+    color: $ca-color-primary;
+  }
+}
+
+/**
+  cards styling
+*/
+
+.card {
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px 2px transparentize(#000, 0.98);
+  .card-body i {
+    border-radius: 5px;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: $ca-color-grey;
+  }
+  .card-footer {
+    background-color: #fff;
+    border: none;
+  }
+  .card-header {
+    background-color: #fff;
+    border: none;
+  }
+}
+/**
+  end cards styling
+*/
+
+/**
+  footer styling
+*/
+.app-footer {
+  background: #fff;
+  border-top: 0;
+}
+/**
+  end footer styling
+*/
+
+/**
+  header styling
+*/
+.app-header {
+  border-bottom: 0;
+  box-shadow: 0px 0px 20px 2px transparentize(#000, 0.9);
+  .navbar-brand {
+    margin-left: 10px;
+  }
+  button[appasidemenutoggler] {
+    display: none;
+  }
+  ul ~ button.navbar-toggler {
+    display: none !important;
+  }
+}
+
+/**
+   end header styling
+*/
+
+/**
+  theme table style
+*/
+.app-body {
+  .btn-success, .btn-success.active, .btn-success:not(:disabled):not(.disabled).active {
+    @include button($ca-color-primary, #fff);
+  }
+  &__contractor {
+    @include theme-styling($ca-color-contractor);
+  }
+  &__artisan {
+    @include theme-styling($ca-color-artisan);
+  }
+  &__mda {
+    @include theme-styling($ca-color-mda);
+  }
+  &__supplier {
+    @include theme-styling($ca-color-supplier);
+  }
+  &__admin {
+    @include theme-styling($ca-color-admin);
+  }
+}
+
+/**
+   end theme table style
+*/
+
+.ngx-pagination .current {
+  padding: 0.1875rem 0.625rem;
+  background: $ca-color-primary !important;
+  color: #fefefe;
+  cursor: default;
+  }
