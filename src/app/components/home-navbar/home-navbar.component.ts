@@ -5,7 +5,9 @@ import {
   ElementRef,
   AfterViewInit,
   HostListener,
+  Input,
 } from '@angular/core';
+import { userType } from '../../home/landing/landing.component';
 
 @Component({
   selector: 'app-home-navbar',
@@ -13,6 +15,10 @@ import {
   styleUrls: ['./home-navbar.component.scss'],
 })
 export class HomeNavbarComponent implements OnInit {
+
+  @Input() user: any;
+  @Input() type: userType;
+  userType = userType;
 
   isScrolled = false;
 

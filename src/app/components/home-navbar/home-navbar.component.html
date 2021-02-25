@@ -32,15 +32,24 @@
             <i class="fa fa-search"></i>
              search
           </button> -->
-          <button class="btn text-white" [routerLink]="['/register']">
+          <button *ngIf="!user" class="btn text-white" [routerLink]="['/register']">
             Sign Up
           </button>
           <button
+            *ngIf="!user"
             class="btn ca-btn-outline"
             [routerLink]="['/login']"
             routerLinkActive="router-link-active"
           >
             Sign In
+          </button>
+
+          <button
+            *ngIf="user"
+            class="btn ca-btn-outline"
+            routerLinkActive="router-link-active"
+          >
+            Dashboard
           </button>
         </ul>
       </div>

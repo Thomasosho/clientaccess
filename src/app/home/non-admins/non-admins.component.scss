@@ -14,11 +14,11 @@
     }
     ul {
       &.nav-pills {
-        border-bottom: 1px solid lighten($ca-color-grey, 40);
+        border-bottom: 1px solid lighten($ca-color-primary, 40);
         justify-content: center;
       }
       & li > a {
-        color: $ca-color-grey;
+        color: $ca-color-primary;
         font-size: 0.9em;
       }
     }
