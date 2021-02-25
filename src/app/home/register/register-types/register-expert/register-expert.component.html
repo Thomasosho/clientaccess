@@ -6,12 +6,19 @@
     </div>
     <select class="custom-select" id="category" name="category" formControlName="category">
       <option value="select category">--- Select Profession ---</option>
-      <option value="Electrical Engineer">Electrical Engineer</option>
-      <option value="Civil Engineer">Civil Engineer</option>
-      <option value="Mechanical Engineer">Mechanical Engineer</option>
-      <option value="Software Engineer">Software Engineer</option>
-      <option value="Structural Engineer">Structural Engineer</option>
-      <option value="Architect">Architect</option>
+      <optgroup label="Engineer">
+        <option value="Electrical Engineer">Electrical Engineer</option>
+        <option value="Civil Engineer">Civil Engineer</option>
+        <option value="Mechanical Engineer">Mechanical Engineer</option>
+        <option value="Software Engineer">Software Engineer</option>
+        <option value="Structural Engineer">Structural Engineer</option>
+        <option value="Mechanical Engineer">Petroleum Engineer</option>
+        <option value="Software Engineer">Network Engineer</option>
+        <option value="Structural Engineer">Agricultural Engineer</option>
+      </optgroup>
+      <optgroup label="Others">
+        <option value="Architect">Architect</option>
+      </optgroup>
     </select>
   </div>
   <div class="input-group mb-3">
@@ -35,6 +42,8 @@
       class="form-control"
       formControlName="phoneNumber"
       placeholder="Phone Number"
+      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+      maxlength = "7"
       required
     />
   </div>

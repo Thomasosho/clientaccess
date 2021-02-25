@@ -20,6 +20,8 @@
       type="number"
       class="form-control"
       formControlName="phoneNumber"
+      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+      maxlength = "6"
       placeholder="Phone Number"
       required
     />
