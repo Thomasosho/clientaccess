@@ -29,7 +29,7 @@
     "@types/file-saver": "^2.0.1",
     "angular-rave": "^2.0.1",
     "angular4-paystack": "^3.0.0",
-    "bootstrap": "^4.5.0",
+    "bootstrap": "^5.0.0",
     "core-js": "^2.6.11",
     "crypto-js": "^4.0.0",
     "file-saver": "^2.0.2",
